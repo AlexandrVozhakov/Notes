@@ -24,7 +24,7 @@ public class Program {
                 com.sun.java.swing.plaf.motif.MotifLookAndFeel
                 com.sun.java.swing.plaf.gtk.GTKLookAndFeel*/
 
-                try {
+                /*try {
                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
                     //UIManager.setLookAndFeel("de.javasoft.plaf.synthetica.SyntheticaPlainLookAndFeel");
                 } catch (ClassNotFoundException e) {
@@ -35,7 +35,7 @@ public class Program {
                     e.printStackTrace();
                 } catch (UnsupportedLookAndFeelException e) {
                     e.printStackTrace();
-                }
+                }*/
 
                 new View();
             }

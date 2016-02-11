@@ -1,6 +1,8 @@
 package com.av;
 
 import javax.swing.*;
+import javax.swing.event.MouseInputAdapter;
+import java.awt.event.MouseEvent;
 import java.util.*;
 
 /**
@@ -18,6 +20,12 @@ public class HeaderList extends JList<Header> {
         listModels = new ArrayList<DefaultListModel<Header>>();
         listModels.add(model);
         this.setCellRenderer(new NewListRenderer());
+        /*this.addMouseListener(new MouseInputAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+            }
+        });*/
     }
 
     public void setNewListModel(){
@@ -37,10 +45,11 @@ public class HeaderList extends JList<Header> {
     public boolean addNote() {
 
         //do not create note if in begin note no text
-        if (!getSelectedListModel().isEmpty() && getSelectedNoteText().equals("")) {
+
+        if (!getSelectedListModel().isEmpty() && getNote(0).getText().equals("")) {
             return false;
         }
-
+        //System.out.println(getNote(0));
         Header header = new Header();
         this.getSelectedListModel().add(0, header);
         notes.put(header, new Note());
@@ -85,10 +94,14 @@ public class HeaderList extends JList<Header> {
         // if in selected tab no text
         if(getSelectedNoteText().equals("")) {
             removeNote(index);
+            this.setSelectedIndex(0);
+            this.ensureIndexIsVisible(0);
             return true;
         }
         // else
         removeNote(index);
+        this.setSelectedIndex(0);
+        this.ensureIndexIsVisible(0);
         return true;
         //DeleteNoteDialog dialog = new DeleteNoteDialog();
 
@@ -103,8 +116,13 @@ public class HeaderList extends JList<Header> {
 
         notes.remove(index);
         getSelectedListModel().removeElementAt(index);
-        this.setSelectedIndex(0);
-        this.ensureIndexIsVisible(0);
+    }
+
+    public void deleteEmptyNote(){
+
+        if(this.getNote(0).getText().equals("")) {
+            removeNote(0);
+        }
     }
 
     public String getSelectedNoteText() {
@@ -113,6 +131,10 @@ public class HeaderList extends JList<Header> {
 
     public Note getSelectedNote(){
         return notes.get(getSelectedListModel().get(getSelectedIndex()));
+    }
+
+    public Note getNote(int index){
+        return notes.get(getSelectedListModel().get(index));
     }
 
     private DefaultListModel<Header> getSelectedListModel(){

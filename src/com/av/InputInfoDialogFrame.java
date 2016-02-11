@@ -19,11 +19,11 @@ public class InputInfoDialogFrame extends JDialog {
         return resultDialog;
     }
 
-    public InputInfoDialogFrame(String showText){
-        //super(component);
-
+    public InputInfoDialogFrame(String showText, Component component){
+        //super((Window) component);
+        this.setLocationRelativeTo(component);
         setSize(500, 200);
-        setLocationRelativeTo(null);
+        //setLocationRelativeTo(null);
         setModalityType(ModalityType.TOOLKIT_MODAL);
         setUndecorated(true);
 

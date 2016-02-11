@@ -158,6 +158,7 @@ public class View extends JFrame {
         // if click not tab "+"
         if ((tabbedPanel.getTabCount() - 1) != index){
             headerList.changeListModel(index);
+            setTextArea(headerList.getSelectedNoteText());
         }
         else {
             addNewTab();
@@ -166,7 +167,7 @@ public class View extends JFrame {
 
     public void addNewTab() {
 
-        InputInfoDialogFrame dialogFrame = new InputInfoDialogFrame("name tab");
+        InputInfoDialogFrame dialogFrame = new InputInfoDialogFrame("name tab", createNote);
         if(dialogFrame.getString().equals("")) {
             // set select on tab before tab "+"
             tabbedPanel.setSelectedIndex(tabbedPanel.getTabCount() - 2);
@@ -276,7 +277,9 @@ public class View extends JFrame {
     MouseAdapter headerListListener = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
+            headerList.deleteEmptyNote();
             setTextArea(headerList.getSelectedNoteText());
+
         }
     };
 
