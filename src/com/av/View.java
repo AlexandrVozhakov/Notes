@@ -245,7 +245,7 @@ public class View extends JFrame {
 
             //Side Bar
 
-            //Delete note key TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            //Delete note key
         textArea.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {

@@ -1,8 +1,14 @@
 package com.av;
 
+import javafx.scene.*;
+import javafx.scene.Cursor;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,9 +21,9 @@ public class FlatButton extends JLabel {
 
         ImageIcon icon = loadIcon(iconName);
         this.setIcon(icon);
-        this.setSize(icon.getIconWidth() , icon.getIconHeight());
+        this.setSize(icon.getIconWidth(), icon.getIconHeight());
+        this.setCursor(java.awt.Cursor.getPredefinedCursor(java.awt.Cursor.HAND_CURSOR));
     }
-
     public ImageIcon loadIcon(String iconName){
 
         Image image = null;
