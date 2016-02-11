@@ -245,16 +245,16 @@ public class View extends JFrame {
 
             //Side Bar
 
-            //Delete note key
-/*        textArea.addKeyListener(new KeyAdapter() {
+            //Delete note key TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        textArea.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_DELETE){
-                    sideBar.delNote();
-                    setTextArea(sideBar.getSelectedNote());
+                    headerList.deleteNote();
+                    setTextArea(headerList.getSelectedNoteText());
                 }
             }
-        });*/
+        });
 /*        textArea.addFocusListener(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent e) {
@@ -279,7 +279,7 @@ public class View extends JFrame {
         public void mouseClicked(MouseEvent e) {
             headerList.deleteEmptyNote();
             setTextArea(headerList.getSelectedNoteText());
-
+            textArea.requestFocus();
         }
     };
 

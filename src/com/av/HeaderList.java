@@ -1,8 +1,6 @@
 package com.av;
 
 import javax.swing.*;
-import javax.swing.event.MouseInputAdapter;
-import java.awt.event.MouseEvent;
 import java.util.*;
 
 /**
@@ -20,12 +18,6 @@ public class HeaderList extends JList<Header> {
         listModels = new ArrayList<DefaultListModel<Header>>();
         listModels.add(model);
         this.setCellRenderer(new NewListRenderer());
-        /*this.addMouseListener(new MouseInputAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-            }
-        });*/
     }
 
     public void setNewListModel(){
@@ -45,7 +37,6 @@ public class HeaderList extends JList<Header> {
     public boolean addNote() {
 
         //do not create note if in begin note no text
-
         if (!getSelectedListModel().isEmpty() && getNote(0).getText().equals("")) {
             return false;
         }
@@ -99,17 +90,15 @@ public class HeaderList extends JList<Header> {
             return true;
         }
         // else
-        removeNote(index);
-        this.setSelectedIndex(0);
-        this.ensureIndexIsVisible(0);
-        return true;
-        //DeleteNoteDialog dialog = new DeleteNoteDialog();
+        YesNoDialogFrame dialog = new YesNoDialogFrame("Remove this note?", this);
 
-        /*if(dialog.isOK()) {
+        if(dialog.getResult()) {
             removeNote(index);
+            this.setSelectedIndex(0);
+            this.ensureIndexIsVisible(0);
             return true;
-        }*/
-        //return false;
+        }
+        return false;
     }
 
     private void removeNote(int index){
