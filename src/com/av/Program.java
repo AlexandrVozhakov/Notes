@@ -3,15 +3,15 @@ package com.av;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by av on 20.01.16.
  */
 public class Program {
 
-    public static final String icons = "/home/av/Workspace/IDEA/Note/src/com/av/icons/";
     public static Font globalFont = new Font(null, Font.PLAIN, 16);
 
     public static void main(String[] args) {
@@ -37,7 +37,7 @@ public class Program {
                     e.printStackTrace();
                 }*/
 
-                new View();
+                new Controller();
             }
         }) ;
     }
@@ -46,12 +46,39 @@ public class Program {
 
         Image image = null;
         try {
-            image = ImageIO.read(new File(icons + iconName));
+            image = ImageIO.read(new File("icons/" + iconName));
         } catch (IOException e) {
             e.printStackTrace();
         }
         ImageIcon icon = new ImageIcon(image);
 
         return icon;
+    }
+
+    public static String date(String format){
+
+        Date date = new Date();
+        return new SimpleDateFormat(format).format(date);
+    }
+
+    public static String readFile(String path){
+
+        BufferedReader in = null;
+        try {
+            in = new BufferedReader(new FileReader(path));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        String str;
+        StringBuffer sb = new StringBuffer();
+        try {
+            while ((str = in.readLine()) != null) {
+                sb.append(str + "\n ");
+            }
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
     }
 }

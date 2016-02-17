@@ -7,6 +7,7 @@ public class Note {
 
     private String name;
     private String date;
+    private String time;
     private String text;
 
     public Note(){
@@ -15,13 +16,13 @@ public class Note {
     public Note(String text){
         this.createNote(text);
     }
-    Controller controller = Model.getControl();
 
     private void createNote(String text){
 
         this.setName(text);
         this.setText("");
-        this.setDate(controller.getDateNow("HH:mm"));
+        this.setTime(Program.date("HH:mm"));
+        this.setDate(Program.date("dd  MMMM  yyyy"));
     }
 
     public String getName() {
@@ -34,6 +35,15 @@ public class Note {
 
     public String getDate() {
         return date;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getTime() {
+
+        return time;
     }
 
     public void setName(String name) {

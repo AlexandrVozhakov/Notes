@@ -10,6 +10,7 @@ public class HeaderList extends JList<Header> {
 
     private ArrayList<DefaultListModel<Header>> listModels;
     private Map<Header, Note> notes;
+    DataBase dataBase = DataBase.getInstance();
 
     public HeaderList(DefaultListModel model) {
 
@@ -40,7 +41,6 @@ public class HeaderList extends JList<Header> {
         if (!getSelectedListModel().isEmpty() && getNote(0).getText().equals("")) {
             return false;
         }
-        //System.out.println(getNote(0));
         Header header = new Header();
         this.getSelectedListModel().add(0, header);
         notes.put(header, new Note());
@@ -94,8 +94,10 @@ public class HeaderList extends JList<Header> {
 
         if(dialog.getResult()) {
             removeNote(index);
+            //System.out.println(1);
             this.setSelectedIndex(0);
             this.ensureIndexIsVisible(0);
+            //System.out.println(2);
             return true;
         }
         return false;

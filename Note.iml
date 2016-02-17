@@ -10,5 +10,6 @@
     <orderEntry type="library" name="synthetica" level="project" />
     <orderEntry type="library" name="syntheticaPlain" level="project" />
     <orderEntry type="library" name="syntetica" level="project" />
+    <orderEntry type="library" name="sqlite-jdbc-3.7.2" level="project" />
   </component>
 </module>

@@ -1,117 +1,85 @@
 package com.av;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Map;
 
 /**
- * Created by av on 20.01.16.
+ * Created by av on 15.02.16.
  */
-public class Model implements Controller {
+public class Model {
 
-    public static Model instance;
-    public static File storage = new File("/home/av/Workspace/IDEA/Notes/src/com/company/Storage.txt");
-    public static File index = new File("/home/av/Workspace/IDEA/Notes/src/com/company/index.txt");
+    //private DefaultListModel<Header> listModel;
+    private ArrayList<String> sections;
+    private ArrayList<Note> notes;
+    private DataBase db;
 
+    public Model(){
 
-    private Model(){
-
+        //listModel = new DefaultListModel<Header>();
+        sections = new ArrayList<String>();
+        notes = new ArrayList<Note>();
+        db = DataBase.getInstance();
+        connectDataBase();
     }
-    public static Model getControl(){
-        if(instance == null)
-            instance = new Model();
-        return instance;
+
+    private void connectDataBase(){
+
+        db = DataBase.getInstance();
+        db.connect();
+        db.createDB();
     }
-/*
-    @Override
-    public boolean createNote(Note note) {
 
-        String text = note.getText();//TextPanel.textArea.getText();
-        String noteName = note.getName();
+    public ArrayList<String> downloadSections(){
 
-        if(text.matches("(\\s+)?\\S"))
+        ArrayList<String> sections = db.getSections();
+        this.sections.addAll(sections);
+        return sections;
+    }
+
+    public void addSection(String name){
+
+        sections.add(name);
+        db.addSection(name);
+    }
+
+    public String getSection(int index){
+        return sections.get(index);
+    }
+
+    public String getLastSection(){
+        return getSection(sections.size() - 1);
+    }
+
+    public ArrayList<String> getSections(){
+
+        return new ArrayList<String>(sections);
+    }
+
+    public boolean createNewTab(String name) {
+
+        if (name.equals("")) {
             return false;
-
-        try {
-
-            RandomAccessFile indexFile = new RandomAccessFile (index, "rw");
-            text += "*}}}*";
-            indexFile.writeBytes(noteName + " " + text.length());
-            indexFile.close();
-
-            RandomAccessFile storageFile = new RandomAccessFile (storage, "rw");
-            storageFile.writeBytes(noteName + " " + text);
-            storageFile.close();
-
-        } catch (FileNotFoundException e) { e.printStackTrace(); }
-        catch (IOException e) { e.printStackTrace(); }
-        //headders.reedHeaders();
+        }
+        addSection(name);
         return true;
     }
 
-    @Override
-    public boolean createHeader(String name) {
-        //Header header = new Header(name);
+    private void setNotes(ArrayList<Note> notes){
 
-        return true;
-    }*/
-
-
-    @Override
-    public boolean createNote() {
-
-        return false;
+        this.notes.addAll(notes);
     }
 
-    @Override
-    public boolean deletNote(Header header) {
-        return false;
+    private ArrayList<Note> downloadNotes(String param){
+        return db.getNotes(param);
     }
 
-    @Override
-    public boolean safeNote(String note) {
-        return false;
+    public Note getNote(int index){
+        return notes.get(index);
     }
 
-    @Override
-    public ArrayList<Header> searchHeaders(String regex) {
 
-        return null;
-    }
 
-    @Override
-    public ArrayList<Header> getHeaders() {
-        return null;
-    }
 
-    @Override
-    public void setHeaders(ArrayList<Header> headers) {
 
-    }
 
-    @Override
-    public void setTextHeader(String text) {
-
-    }
-
-    @Override
-    public String getNote(Header header) {
-        return null;
-    }
-
-    public String getDateNow(String reg){
-
-        Date date = new Date();
-        SimpleDateFormat format = new SimpleDateFormat(reg);
-        return new String(format.format(date)); //"dd.MM.yyyy HH:mm:ss"
-    }
-
-    @Override
-    public boolean documentChanged(String text) {
-
-        //System.out.println(text);
-
-        return false;
-    }
 }
