@@ -5,7 +5,7 @@ package com.av;
  */
 public class Note {
 
-    private String name;
+    private String header;
     private String date;
     private String time;
     private String text;
@@ -19,14 +19,15 @@ public class Note {
 
     private void createNote(String text){
 
-        this.setName(text);
+
+        this.setHeader(text);
         this.setText("");
-        this.setTime(Program.date("HH:mm"));
-        this.setDate(Program.date("dd  MMMM  yyyy"));
+        this.setTime(Service.date("HH:mm"));
+        this.setDate(Service.date("dd  MMMM  yyyy"));
     }
 
-    public String getName() {
-        return name;
+    public String getHeader() {
+        return header;
     }
 
     public String getText() {
@@ -46,9 +47,10 @@ public class Note {
         return time;
     }
 
-    public void setName(String name) {
+    public void setHeader(String text) {
 
-        this.name = name;
+        String date = Service.date("HH:mm");
+        this.header = "<html><b>"+ text +"</b><br/><FONT color=\"#808080\">" + date + "</FONT></html>";
     }
 
     public void setDate(String date) {
@@ -57,5 +59,9 @@ public class Note {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String toString(){
+        return getHeader();
     }
 }

@@ -1,25 +1,26 @@
 package com.av;
 
+import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.Observable;
 
 /**
  * Created by av on 15.02.16.
  */
-public class Model {
+public class Model extends Observable{
 
-    //private DefaultListModel<Header> listModel;
+
     private ArrayList<String> sections;
-    private ArrayList<Note> notes;
+    private DefaultListModel<Note> listModel;
+
     private DataBase db;
 
     public Model(){
 
-        //listModel = new DefaultListModel<Header>();
+        listModel = new DefaultListModel<Note>();
         sections = new ArrayList<String>();
-        notes = new ArrayList<Note>();
-        db = DataBase.getInstance();
         connectDataBase();
+        setSections();
     }
 
     private void connectDataBase(){
@@ -31,23 +32,32 @@ public class Model {
 
     public ArrayList<String> downloadSections(){
 
+        //setChanged();
+        //notifyObservers();
+
         ArrayList<String> sections = db.getSections();
-        this.sections.addAll(sections);
+        //this.sections.addAll(sections);
         return sections;
     }
 
-    public void addSection(String name){
+    private void setSections(){
+        sections.addAll(downloadSections());
+        //sections
+    }
 
-        sections.add(name);
-        db.addSection(name);
+    private void addSection(String name){
+
+        //sections.add(name);
+        //changeSection(sections.size() - 1);
+        //db.addSection(name);
     }
 
     public String getSection(int index){
-        return sections.get(index);
+        return null;//sections.get(index);
     }
 
     public String getLastSection(){
-        return getSection(sections.size() - 1);
+        return null;//getSection(sections.size() - 1);
     }
 
     public ArrayList<String> getSections(){
@@ -64,9 +74,25 @@ public class Model {
         return true;
     }
 
+    public void changeSection(int sectionIndex){
+
+        //pointerCurrentSection = sectionIndex;
+        //System.out.println(sections.get(pointerCurrentSection));
+    }
+
+    public void createNewNote(){
+
+        //notes.add(new Note());
+        //db.insertNote(pointerCurrentSection, "New note");
+    }
+
+    public void editNote(int noteId, String text){
+        //db.insertNote(pointerCurrentSection, text);
+    }
+
     private void setNotes(ArrayList<Note> notes){
 
-        this.notes.addAll(notes);
+        //this.notes.addAll(notes);
     }
 
     private ArrayList<Note> downloadNotes(String param){
@@ -74,7 +100,7 @@ public class Model {
     }
 
     public Note getNote(int index){
-        return notes.get(index);
+        return null;//notes.get(index);
     }
 
 

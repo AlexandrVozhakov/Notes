@@ -5,8 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * Created by av on 12.02.16.
@@ -31,8 +29,7 @@ public class DataBase {
 
 
     // Data Base connecting
-    public static void connect()
-    {
+    public static void connect() {
         connection = null;
         try {
             Class.forName("org.sqlite.JDBC");
@@ -48,7 +45,7 @@ public class DataBase {
     // Create tables
     public void createDB() {
 
-        String str = Program.readFile("SQL/dump.sql");
+        String str = Service.readFile("SQL/dump.sql");
         String [] commands = str.toString().split("AND");
 
         try {
@@ -69,14 +66,26 @@ public class DataBase {
         //System.out.println("Таблица создана или уже существует.");
     }
 
-    public void addNewNote(String name) {
+    public void insertNote(int section_id, String text) {
 
         try {
-            statement.execute("INSERT INTO notes ('header', 'text') VALUES ('first note', 'any text'); ");
+            statement.execute("INSERT INTO notes ('section_id', 'header', 'text') VALUES " +
+                    "('"+ section_id +"', 'new note', '"+ text +"'); ");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //System.out.println(1);
+    }
+
+    public void updateNote(String text){
+
+        try {
+            statement.executeUpdate("UPDATE notes SET text = '"+ text +"' WHERE id = " + 1);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     public void addSection(String name) {
 
         try {
@@ -93,7 +102,6 @@ public class DataBase {
             resSet = statement.executeQuery("SELECT * FROM sections");
             while(resSet.next())
             {
-                //int id = resSet.getInt("id");
                 String  name = resSet.getString("name");
                 sections.add(name);
             }
@@ -111,7 +119,7 @@ public class DataBase {
             while(resSet.next())
             {
                 Note n = new Note();
-                n.setName(resSet.getString("name"));
+                n.setHeader(resSet.getString("name"));
                 n.setDate(resSet.getString("date"));
                 n.setText(resSet.getString("text"));
                 notes.add(n);
@@ -122,8 +130,7 @@ public class DataBase {
         return notes;
     }
 
-    public void closeDB()
-    {
+    public void closeDB() {
         try {
             connection.close();
             statement.close();

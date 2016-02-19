@@ -1,7 +1,5 @@
 package com.av;
 
-import javafx.scene.paint.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.Color;
@@ -27,7 +25,7 @@ public class NewListRenderer implements ListCellRenderer{
             renderer.setBackground(new Color(255, 232, 82));
         }*/
 
-        renderer.setFont(Program.globalFont);
+        renderer.setFont(Service.globalFont);
         renderer.setForeground(Color.DARK_GRAY);
         renderer.setPreferredSize(new Dimension(800, dimension.getSearchPanel().height + 2));
         renderer.setIcon(icon);

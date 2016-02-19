@@ -133,7 +133,7 @@ public class SideBar extends JPanel {
 
             setLayout(new BorderLayout());
             JLabel label = new JLabel("Delete this note?");
-            label.setFont(Program.globalFont);
+            label.setFont(Service.globalFont);
             label.setPreferredSize(new Dimension(500, 100));
 
             JPanel labelPanel = new JPanel(new FlowLayout());

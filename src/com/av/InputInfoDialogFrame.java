@@ -33,7 +33,7 @@ public class InputInfoDialogFrame extends JDialog {
         label.setPreferredSize(new Dimension(500, 100));
 
         final JTextField textField = new JTextField();
-        textField.setFont(Program.globalFont);
+        textField.setFont(Service.globalFont);
         textField.setPreferredSize(new Dimension(300, 35));
         textField.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
         textField.setHorizontalAlignment(JTextField.CENTER);

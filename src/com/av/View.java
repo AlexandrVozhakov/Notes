@@ -8,11 +8,14 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by av on 20.01.16.
  */
-public class View extends JFrame {
+public class View extends JPanel implements Observer{
 
     private JTextField search;
     private JLabel date;
@@ -22,29 +25,25 @@ public class View extends JFrame {
     public static FlatButton deleteNote;
     public JPanel mainPanel;
     private DocListener docListener;
-    private JList<Header> headerList;
-    private DefaultListModel<Header> listModel;
+    private JList<Note> headerList;
+    private DefaultListModel<Note> listModel;
     private JTabbedPane tabbedPanel;
-    private Controller controller;
+    private Model model;
 
-    public View(Controller controller) {
+    public View(Model model) {
 
+        this.model = model;
         //create frame size
-        this.controller = controller;
         dimension = GlobalDimension.getInstance();
         docListener = new DocListener();
-        listModel = new DefaultListModel<Header>();
-        headerList = new JList<Header>(listModel);
+        listModel = new DefaultListModel<Note>();
+        headerList = new JList<Note>(listModel);
+        headerList.setCellRenderer(new NewListRenderer());
+        createGUI();
     }
 
 
     public void createGUI(){
-
-        // settings main frame program
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(dimension.getFrame());
-        this.setLocationRelativeTo(null);
-        this.setLayout(new BorderLayout());
 
         //sideBarScrollPane.getVerticalScrollBar().setUI(new CustomScrollbarUI());
         mainPanel = createNotePanel();
@@ -60,6 +59,9 @@ public class View extends JFrame {
         tabbedPanel.setPreferredSize(dimension.getFrame());
         tabbedPanel.setBackground(null);
         tabbedPanel.setFont(new Font(null, Font.BOLD, 18));
+        tabbedPanel.addTab("+", mainPanel);
+        tabbedPanel.addChangeListener(tabChangeListener);
+        setTabs(model.getSections());
         return tabbedPanel;
     }
 
@@ -76,7 +78,6 @@ public class View extends JFrame {
         JPanel rootPanel = createPanel(dimension.getRootPanel(), null, new BorderLayout());
         JPanel sideBarPanel = createPanel(dimension.getSideBarPanel(), Color.WHITE, new BorderLayout());
         JPanel searchPanel = createPanel(dimension.getSearchPanel(), Color.WHITE, new BorderLayout());
-
         JScrollPane listScrollPane = new JScrollPane(headerList);
 
         JPanel listPanel = createPanel(dimension.getListPanel(), Color.WHITE, new BorderLayout());
@@ -104,7 +105,7 @@ public class View extends JFrame {
         FlatButton deleteNote = createDeleteNoteButton();
 
         // create date label
-        date = new JLabel(Program.date("d  MMMM  yyyy"));
+        date = new JLabel(Service.date("d  MMMM  yyyy"));
         date.setFont(new Font(null, Font.ITALIC, 19));
 
         listScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -148,7 +149,7 @@ public class View extends JFrame {
     private JTextArea createTextArea(){
 
         textArea = new JTextArea();
-        textArea.setFont(Program.globalFont);
+        textArea.setFont(Service.globalFont);
         textArea.setOpaque(false);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
@@ -170,7 +171,7 @@ public class View extends JFrame {
 
         search = new JTextField();
         search = new JTextField("Search");
-        search.setFont(Program.globalFont);
+        search.setFont(Service.globalFont);
         search.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
         search.setHorizontalAlignment(JTextField.CENTER);
 
@@ -189,6 +190,18 @@ public class View extends JFrame {
                 }
             }
         });
+        search.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                //controller.searchTextInsert(search.getText());
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                //controller.searchTextInsert(search.getText());
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {}
+        });
         search.addFocusListener(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent e) {
@@ -204,10 +217,9 @@ public class View extends JFrame {
         createNote.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                /*if (headerList.addNote()) {
-                    setTextArea("");
-                    textArea.requestFocus();
-                }*/
+
+                listModel.addElement(new Note());
+                //controller.createNote();
             }
         });
         return createNote;
@@ -220,27 +232,24 @@ public class View extends JFrame {
         deleteNote.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                //headerList.deleteNote();
-                //setTextArea(headerList.getSelectedNoteText());
+
+                //controller.removeNote(headerList.getSelectedIndex());
             }
         });
         return deleteNote;
     }
 
+    public void setTabs(ArrayList<String> tabs){
 
-    public void setTabChangeListener(){
-        tabbedPanel.addChangeListener(tabChangeListener);
+        for(String t : tabs)
+            setNewTab(t);
     }
 
-    public void addTab(String name){
-        tabbedPanel.add(name, null);
-    }
-
-    public void setNewTab(int index, String name) {
+    public void setNewTab(String name) {
 
         tabbedPanel.removeChangeListener(tabChangeListener);
-        tabbedPanel.add(null, name, index);
-        tabbedPanel.setSelectedIndex(index);
+        tabbedPanel.add(null, name, tabbedPanel.getTabCount() - 1);
+        tabbedPanel.setSelectedIndex(tabbedPanel.getTabCount() - 2);
         tabbedPanel.addChangeListener(tabChangeListener);
     }
 
@@ -264,49 +273,24 @@ public class View extends JFrame {
         textArea.getDocument().addDocumentListener(docListener);
     }
 
-/*    public void changeTab(){
 
-        int index = tabbedPanel.getSelectedIndex();
+    @Override
+    public void update(Observable o, Object arg) {
 
-        // if click not tab "+"
-        if ((tabbedPanel.getTabCount() - 1) != index){
-            headerList.changeListModel(index);
-            setTextArea(headerList.getSelectedNoteText());
-        }
-        else {
-            addNewTab();
-        }
-    }*/
+    }
 
-/*    public void createTab(int index, String name) {
+    public void addActionListener(ActionListener listener){
 
-        tabbedPanel.removeChangeListener(tabChangeListener);
-        tabbedPanel.add(null, name, index);
-        tabbedPanel.setSelectedIndex(index);
-        headerList.setNewListModel();
-        tabbedPanel.addChangeListener(tabChangeListener);
-    }*/
+    }
 
-/*    public void addNewTab() {
 
-        InputInfoDialogFrame dialogFrame = new InputInfoDialogFrame("name tab", createNote);
-        String name = dialogFrame.getString();
-        if(name.equals("")) {
-            // set select on tab before tab "+"
-            tabbedPanel.setSelectedIndex(tabbedPanel.getTabCount() - 2);
-            return;
-        }
-        int index = tabbedPanel.getSelectedIndex();
-        createTab(index, name);
-        //dataBase.addSection(name);
-        setTextArea("");
-    }*/
 
 
     ChangeListener tabChangeListener = new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
-            controller.changeTab(tabbedPanel.getSelectedIndex());
+            System.out.println(tabbedPanel.getSelectedIndex());
+            //controller.changeTab(tabbedPanel.getSelectedIndex());
         }
     };
 
@@ -325,7 +309,7 @@ public class View extends JFrame {
         private void textChanged() {
 
             text = textArea.getText().trim();
-            controller.noteTextChanged(text);
+            //controller.textNoteChange(headerList.getSelectedIndex(), text);
             headerList.repaint();
         }
     }

@@ -10,21 +10,21 @@ import java.util.Date;
 /**
  * Created by av on 20.01.16.
  */
-public class Program {
+public class Service {
 
     public static Font globalFont = new Font(null, Font.PLAIN, 16);
 
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
 
-/*                javax.swing.plaf.metal.MetalLookAndFeel
+*//*                javax.swing.plaf.metal.MetalLookAndFeel
                 javax.swing.plaf.nimbus.NimbusLookAndFeel
                 com.sun.java.swing.plaf.motif.MotifLookAndFeel
-                com.sun.java.swing.plaf.gtk.GTKLookAndFeel*/
+                com.sun.java.swing.plaf.gtk.GTKLookAndFeel*//*
 
-                /*try {
+                *//*try {
                     UIManager.setLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
                     //UIManager.setLookAndFeel("de.javasoft.plaf.synthetica.SyntheticaPlainLookAndFeel");
                 } catch (ClassNotFoundException e) {
@@ -35,12 +35,17 @@ public class Program {
                     e.printStackTrace();
                 } catch (UnsupportedLookAndFeelException e) {
                     e.printStackTrace();
-                }*/
+                }*//*
+                *//*try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }*//*
 
                 new Controller();
             }
         }) ;
-    }
+    }*/
 
     public static ImageIcon loadIcon(String iconName){
 
