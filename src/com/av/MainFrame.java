@@ -10,9 +10,10 @@ public class MainFrame extends JFrame {
     public MainFrame(){
 
         Model model = new Model();
-        View view = new View(model);
         Controller controller = new Controller(model);
-        view.addActionListener(controller);
+        View view = new View(model, controller);
+        //view.setController(controller);
+        //view.addActionListener(controller);
         model.addObserver(view);
         this.getContentPane().add(view);
     }

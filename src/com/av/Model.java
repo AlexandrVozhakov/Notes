@@ -12,6 +12,7 @@ public class Model extends Observable{
 
     private ArrayList<String> sections;
     private DefaultListModel<Note> listModel;
+    private int selectedNote = 0;
 
     private DataBase db;
 
@@ -30,34 +31,17 @@ public class Model extends Observable{
         db.createDB();
     }
 
-    public ArrayList<String> downloadSections(){
+    private ArrayList<String> downloadSections(){
 
         //setChanged();
         //notifyObservers();
 
         ArrayList<String> sections = db.getSections();
-        //this.sections.addAll(sections);
         return sections;
     }
 
     private void setSections(){
         sections.addAll(downloadSections());
-        //sections
-    }
-
-    private void addSection(String name){
-
-        //sections.add(name);
-        //changeSection(sections.size() - 1);
-        //db.addSection(name);
-    }
-
-    public String getSection(int index){
-        return null;//sections.get(index);
-    }
-
-    public String getLastSection(){
-        return null;//getSection(sections.size() - 1);
     }
 
     public ArrayList<String> getSections(){
@@ -65,24 +49,41 @@ public class Model extends Observable{
         return new ArrayList<String>(sections);
     }
 
-    public boolean createNewTab(String name) {
-
-        if (name.equals("")) {
-            return false;
-        }
-        addSection(name);
-        return true;
+    public String getSection(int index){
+        return sections.get(index);
     }
 
-    public void changeSection(int sectionIndex){
+    public DefaultListModel<Note> getListModel(){
+        return listModel;
+    }
 
-        //pointerCurrentSection = sectionIndex;
-        //System.out.println(sections.get(pointerCurrentSection));
+    private void changeListModel(){
+
+        listModel = new DefaultListModel<Note>();
+        setChanged();
+        notifyObservers(listModel);
+    }
+
+
+    public void addSection(String name) {
+
+        sections.add(name);
+        db.addSection(name);
+        changeListModel();
+        setChanged();
+        notifyObservers(sections);
+    }
+
+    public void changeSection(int index) {
+
+        changeListModel();
     }
 
     public void createNewNote(){
 
-        //notes.add(new Note());
+        listModel.add(0, new Note());
+        setChanged();
+        notifyObservers(listModel);
         //db.insertNote(pointerCurrentSection, "New note");
     }
 
@@ -95,12 +96,23 @@ public class Model extends Observable{
         //this.notes.addAll(notes);
     }
 
+    public void removeNote(int index){
+
+        if(index < 0)
+            return;
+        listModel.remove(index);
+    }
+
     private ArrayList<Note> downloadNotes(String param){
         return db.getNotes(param);
     }
 
+    public void selectNote(int index){
+        selectedNote = index;
+    }
+
     public Note getNote(int index){
-        return null;//notes.get(index);
+        return listModel.get(index);
     }
 
 

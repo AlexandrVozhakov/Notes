@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 /**
  * Created by av on 10.02.16.
  */
-public class InputInfoDialogFrame extends JDialog {
+public class InputInfoDialog extends JDialog {
 
     private String resultDialog;
 
@@ -19,7 +19,7 @@ public class InputInfoDialogFrame extends JDialog {
         return resultDialog;
     }
 
-    public InputInfoDialogFrame(String showText, Component component){
+    public InputInfoDialog(String showText, Component component){
         //super((Window) component);
         this.setLocationRelativeTo(component);
         setSize(500, 200);
@@ -56,7 +56,7 @@ public class InputInfoDialogFrame extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 resultDialog = textField.getText();
-                InputInfoDialogFrame.this.setVisible(false);
+                InputInfoDialog.this.setVisible(false);
             }
         });
 
@@ -65,11 +65,11 @@ public class InputInfoDialogFrame extends JDialog {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     resultDialog = textField.getText();
-                    InputInfoDialogFrame.this.setVisible(false);
+                    InputInfoDialog.this.setVisible(false);
                 }
                 else if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
                     resultDialog = "";
-                    InputInfoDialogFrame.this.setVisible(false);
+                    InputInfoDialog.this.setVisible(false);
                 }
             }
         });
@@ -79,7 +79,7 @@ public class InputInfoDialogFrame extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 resultDialog = "";
-                InputInfoDialogFrame.this.setVisible(false);
+                InputInfoDialog.this.setVisible(false);
             }
         });
 

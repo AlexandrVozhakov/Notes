@@ -26,20 +26,21 @@ public class View extends JPanel implements Observer{
     public JPanel mainPanel;
     private DocListener docListener;
     private JList<Note> headerList;
-    private DefaultListModel<Note> listModel;
     private JTabbedPane tabbedPanel;
     private Model model;
+    IController controller;
 
-    public View(Model model) {
+    public View(Model model, IController controller) {
 
         this.model = model;
+        this.controller = controller;
         //create frame size
         dimension = GlobalDimension.getInstance();
         docListener = new DocListener();
-        listModel = new DefaultListModel<Note>();
-        headerList = new JList<Note>(listModel);
+        headerList = new JList<Note>(model.getListModel());
         headerList.setCellRenderer(new NewListRenderer());
         createGUI();
+        setListeners();
     }
 
 
@@ -58,10 +59,11 @@ public class View extends JPanel implements Observer{
         tabbedPanel = new JTabbedPane();
         tabbedPanel.setPreferredSize(dimension.getFrame());
         tabbedPanel.setBackground(null);
+        tabbedPanel.setBorder(null);
         tabbedPanel.setFont(new Font(null, Font.BOLD, 18));
         tabbedPanel.addTab("+", mainPanel);
         tabbedPanel.addChangeListener(tabChangeListener);
-        setTabs(model.getSections());
+        this.setTabs(model.getSections());
         return tabbedPanel;
     }
 
@@ -96,13 +98,16 @@ public class View extends JPanel implements Observer{
         textArea = createTextArea();
 
         // create search text field
-        JTextField search = createSearchField();
+        search = createSearchField();
+        //search.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 
         // create Create button
-        FlatButton createNote = createAddNoteButton();
+        createNote = createAddNoteButton();
+        createNote.setName("Create");
 
         // create Delete button
-        FlatButton deleteNote = createDeleteNoteButton();
+        deleteNote = createDeleteNoteButton();
+        deleteNote.setName("Delete");
 
         // create date label
         date = new JLabel(Service.date("d  MMMM  yyyy"));
@@ -214,14 +219,6 @@ public class View extends JPanel implements Observer{
     private FlatButton createAddNoteButton(){
         createNote = new FlatButton("Create.png");
         createNote.setLocation(dimension.getBorder(), 5);
-        createNote.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-                listModel.addElement(new Note());
-                //controller.createNote();
-            }
-        });
         return createNote;
     }
 
@@ -239,13 +236,13 @@ public class View extends JPanel implements Observer{
         return deleteNote;
     }
 
-    public void setTabs(ArrayList<String> tabs){
+    private void setTabs(ArrayList<String> tabs){
 
         for(String t : tabs)
             setNewTab(t);
     }
 
-    public void setNewTab(String name) {
+    private void setNewTab(String name) {
 
         tabbedPanel.removeChangeListener(tabChangeListener);
         tabbedPanel.add(null, name, tabbedPanel.getTabCount() - 1);
@@ -253,44 +250,65 @@ public class View extends JPanel implements Observer{
         tabbedPanel.addChangeListener(tabChangeListener);
     }
 
-    public void setSelectedTab(int index){
+    private void setSelectedTab(int index){
         tabbedPanel.setSelectedIndex(index);
     }
 
-    public void setListModel(DefaultListModel listModel){
-        headerList.setModel(listModel);
-    }
-
-    public void setMainPanel(){
+    private void setMainPanel(){
         tabbedPanel.setComponentAt(0, mainPanel);
         //tabbedPanel.addTab(name, component);
     }
 
-    public void setTextArea(String text){
+    private void setTextArea(String text){
 
         textArea.getDocument().removeDocumentListener(docListener);
         textArea.setText(text);
         textArea.getDocument().addDocumentListener(docListener);
     }
 
+    private void showNote(Note note){
+        setTextArea(note.getText());
+        date.setText(note.getDate());
+    }
+
 
     @Override
     public void update(Observable o, Object arg) {
+        //updateTabs();
+        if(arg instanceof ArrayList)
+            setNewTab(model.getSection(tabbedPanel.getTabCount() - 1));
 
+        if(arg instanceof DefaultListModel)
+            headerList.setModel(model.getListModel());
     }
 
-    public void addActionListener(ActionListener listener){
+    public void setListeners(){
+
+        createNote.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                controller.createNote();
+            }
+        });
+        deleteNote.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                controller.removeNote(headerList.getSelectedIndex());
+            }
+        });
+        headerList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                showNote(model.getNote(headerList.getSelectedIndex()));
+            }
+        });
 
     }
-
-
-
 
     ChangeListener tabChangeListener = new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
-            System.out.println(tabbedPanel.getSelectedIndex());
-            //controller.changeTab(tabbedPanel.getSelectedIndex());
+            controller.changeTab(tabbedPanel.getSelectedIndex());
         }
     };
 

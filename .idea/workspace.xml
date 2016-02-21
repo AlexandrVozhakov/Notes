@@ -2,22 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a2596fe-3bb8-4dd2-8e4e-74e75aba0501" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/Notes.s3db" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/DB.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/Program$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/Program.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$8.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/av/Program.java" afterPath="$PROJECT_DIR$/src/com/av/Service.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialogFrame$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialogFrame$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialogFrame$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialogFrame.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/av/HeaderList.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/av/SideBar.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/av/InputInfoDialogFrame.java" afterPath="$PROJECT_DIR$/src/com/av/InputInfoDialog.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/Controller.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/DataBase.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/DataBase.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/FlatButton.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/FlatButton.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/Header.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/Header.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialogFrame.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialogFrame.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/MainFrame$1.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/MainFrame$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/MainFrame.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/MainFrame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/Model.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/Model.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/NewListRenderer$MyIcon.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/NewListRenderer$MyIcon.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/NewListRenderer.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/NewListRenderer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/Note.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/Note.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/SideBar$DeleteNoteDialog.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/SideBar$DeleteNoteDialog.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$1.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$2.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$3.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$3.class" />
@@ -27,18 +23,19 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$7.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$7.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$DocListener.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$DocListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/YesNoDialogFrame$1.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/YesNoDialogFrame$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/YesNoDialogFrame$2.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/YesNoDialogFrame$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/YesNoDialogFrame$3.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/YesNoDialogFrame$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/YesNoDialogFrame.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/YesNoDialogFrame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Notes.s3db" afterPath="$PROJECT_DIR$/Notes.s3db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/Controller.java" afterPath="$PROJECT_DIR$/src/com/av/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/DataBase.java" afterPath="$PROJECT_DIR$/src/com/av/DataBase.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/FlatButton.java" afterPath="$PROJECT_DIR$/src/com/av/FlatButton.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/Header.java" afterPath="$PROJECT_DIR$/src/com/av/Header.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/InputInfoDialogFrame.java" afterPath="$PROJECT_DIR$/src/com/av/InputInfoDialogFrame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/MainFrame.java" afterPath="$PROJECT_DIR$/src/com/av/MainFrame.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/Model.java" afterPath="$PROJECT_DIR$/src/com/av/Model.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/NewListRenderer.java" afterPath="$PROJECT_DIR$/src/com/av/NewListRenderer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/Note.java" afterPath="$PROJECT_DIR$/src/com/av/Note.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/SideBar.java" afterPath="$PROJECT_DIR$/src/com/av/SideBar.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/View.java" afterPath="$PROJECT_DIR$/src/com/av/View.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/av/YesNoDialogFrame.java" afterPath="$PROJECT_DIR$/src/com/av/YesNoDialogFrame.java" />
     </list>
     <ignored path="Note.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,14 +57,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="CustomScrollBarUI.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/av/CustomScrollBarUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="MainFrame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/av/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+              <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
               <folding>
-                <element signature="e#477#783#0" expanded="true" />
-                <element signature="e#782#783#0" expanded="true" />
+                <element signature="e#533#839#0" expanded="true" />
+                <element signature="e#838#839#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,27 +84,36 @@
         <entry file="file://$PROJECT_DIR$/src/com/av/View.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="282" column="0" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
+              <caret line="276" column="23" selection-start-line="276" selection-start-column="23" selection-end-line="276" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#View#0;class#View#0" expanded="false" />
                 <element signature="method#createGUI#0;class#View#0" expanded="false" />
                 <element signature="method#createTabbedPanel#0;class#View#0" expanded="false" />
                 <element signature="method#createPanel#0;class#View#0" expanded="false" />
                 <element signature="method#createNotePanel#0;class#View#0" expanded="false" />
                 <element signature="method#createTextArea#0;class#View#0" expanded="false" />
                 <element signature="method#createSearchField#0;class#View#0" expanded="false" />
-                <element signature="e#6457#6612#0" expanded="true" />
-                <element signature="e#6611#6612#0" expanded="true" />
-                <element signature="e#7442#7600#0" expanded="true" />
-                <element signature="e#7599#7600#0" expanded="true" />
+                <element signature="e#6642#6797#0" expanded="true" />
+                <element signature="e#6796#6797#0" expanded="true" />
+                <element signature="e#7627#7785#0" expanded="true" />
+                <element signature="e#7784#7785#0" expanded="true" />
                 <element signature="method#createAddNoteButton#0;class#View#0" expanded="false" />
                 <element signature="method#createDeleteNoteButton#0;class#View#0" expanded="false" />
                 <element signature="method#setTabs#0;class#View#0" expanded="false" />
                 <element signature="method#setNewTab#0;class#View#0" expanded="false" />
+                <element signature="e#8896#8897#0" expanded="true" />
+                <element signature="e#8947#8948#0" expanded="true" />
                 <element signature="method#setMainPanel#0;class#View#0" expanded="false" />
                 <element signature="method#setTextArea#0;class#View#0" expanded="false" />
-                <element signature="e#9654#9892#0" expanded="true" />
-                <element signature="e#9891#9892#0" expanded="true" />
+                <element signature="method#setListeners#0;class#View#0" expanded="false" />
+                <element signature="e#9798#9958#0" expanded="true" />
+                <element signature="e#9957#9958#0" expanded="true" />
+                <element signature="e#9997#10186#0" expanded="true" />
+                <element signature="e#10185#10186#0" expanded="true" />
+                <element signature="e#10225#10416#0" expanded="true" />
+                <element signature="e#10415#10416#0" expanded="true" />
+                <element signature="class#DocListener#0;class#View#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -106,18 +122,16 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/av/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41207814">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6354402">
+              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#searchTextInsert#0;class#Controller#0" expanded="false" />
-                <element signature="method#changeTab#0;class#Controller#0" expanded="false" />
-                <element signature="method#createNote#0;class#Controller#0" expanded="false" />
-                <element signature="method#removeNote#0;class#Controller#0" expanded="false" />
-                <element signature="method#openNote#0;class#Controller#0" expanded="false" />
-                <element signature="method#textNoteChange#0;class#Controller#0" expanded="false" />
-                <element signature="e#1921#1922#0" expanded="true" />
-                <element signature="e#1971#1972#0" expanded="true" />
+                <element signature="e#644#645#0" expanded="true" />
+                <element signature="e#681#682#0" expanded="true" />
+                <element signature="e#722#723#0" expanded="true" />
+                <element signature="e#761#762#0" expanded="true" />
+                <element signature="e#801#802#0" expanded="true" />
+                <element signature="e#840#841#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,18 +141,33 @@
         <entry file="file://$PROJECT_DIR$/src/com/av/Model.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="45" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="45" />
+              <caret line="70" column="28" selection-start-line="70" selection-start-column="28" selection-end-line="70" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1119#1120#0" expanded="true" />
-                <element signature="e#1168#1169#0" expanded="true" />
-                <element signature="e#1205#1206#0" expanded="true" />
-                <element signature="e#1266#1267#0" expanded="true" />
-                <element signature="method#createNewTab#0;class#Model#0" expanded="false" />
-                <element signature="e#2105#2106#0" expanded="true" />
-                <element signature="e#2146#2147#0" expanded="true" />
-                <element signature="e#2183#2184#0" expanded="true" />
-                <element signature="e#2229#2230#0" expanded="true" />
+                <element signature="method#connectDataBase#0;class#Model#0" expanded="false" />
+                <element signature="method#downloadSections#0;class#Model#0" expanded="false" />
+                <element signature="method#getSections#0;class#Model#0" expanded="false" />
+                <element signature="e#1129#1130#0" expanded="true" />
+                <element signature="e#1161#1162#0" expanded="true" />
+                <element signature="method#removeNote#0;class#Model#0" expanded="false" />
+                <element signature="e#2166#2167#0" expanded="true" />
+                <element signature="e#2207#2208#0" expanded="true" />
+                <element signature="e#2247#2248#0" expanded="true" />
+                <element signature="e#2283#2284#0" expanded="true" />
+                <element signature="e#2320#2321#0" expanded="true" />
+                <element signature="e#2363#2364#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputInfoDialog.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/av/InputInfoDialog.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -200,12 +229,9 @@
         <option value="$PROJECT_DIR$/src/com/av/ListModel.java" />
         <option value="$PROJECT_DIR$/src/com/av/DialogFrame.java" />
         <option value="$PROJECT_DIR$/src/com/av/InputInfoDialogFrame.java" />
-        <option value="$PROJECT_DIR$/src/com/av/YesNoDialogFrame.java" />
         <option value="$PROJECT_DIR$/src/com/av/conn.java" />
         <option value="$PROJECT_DIR$/src/com/av/TeasSQLite.java" />
         <option value="$PROJECT_DIR$/src/com/av/DB.java" />
-        <option value="$PROJECT_DIR$/src/com/av/HeaderList.java" />
-        <option value="$PROJECT_DIR$/src/com/av/FlatButton.java" />
         <option value="$PROJECT_DIR$/src/com/av/Header.java" />
         <option value="$PROJECT_DIR$/src/com/av/Control.java" />
         <option value="$PROJECT_DIR$/src/com/av/dump.sql" />
@@ -218,12 +244,16 @@
         <option value="$PROJECT_DIR$/src/com/av/IController.java" />
         <option value="$PROJECT_DIR$/src/com/av/Program.java" />
         <option value="$PROJECT_DIR$/src/com/av/Service.java" />
-        <option value="$PROJECT_DIR$/src/com/av/MainFrame.java" />
-        <option value="$PROJECT_DIR$/src/com/av/Controller.java" />
-        <option value="$PROJECT_DIR$/src/com/av/Note.java" />
         <option value="$PROJECT_DIR$/src/com/av/NewListRenderer.java" />
+        <option value="$PROJECT_DIR$/src/com/av/FlatButton.java" />
+        <option value="$PROJECT_DIR$/src/com/av/InputInfoDialog.java" />
+        <option value="$PROJECT_DIR$/src/com/av/YesNoDialogFrame.java" />
+        <option value="$PROJECT_DIR$/src/com/av/MainFrame.java" />
+        <option value="$PROJECT_DIR$/src/com/av/Note.java" />
         <option value="$PROJECT_DIR$/src/com/av/Model.java" />
+        <option value="$PROJECT_DIR$/src/com/av/Controller.java" />
         <option value="$PROJECT_DIR$/src/com/av/View.java" />
+        <option value="$PROJECT_DIR$/src/com/av/HeaderList.java" />
       </list>
     </option>
   </component>
@@ -793,7 +823,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843652" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295699" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35146898" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="0" y="486" width="1920" height="344" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35146898" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" x="0" y="486" width="1920" height="344" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21505377" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -832,21 +862,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/av/HeaderList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#changeListModel#0;class#HeaderList#0" expanded="false" />
-            <element signature="method#setTextHeader#0;class#HeaderList#0" expanded="false" />
-            <element signature="method#textChanged#0;class#HeaderList#0" expanded="false" />
-            <element signature="method#deleteNote#0;class#HeaderList#0" expanded="false" />
-            <element signature="method#deleteEmptyNote#0;class#HeaderList#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/av/Service.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -883,24 +898,33 @@
           <caret line="252" column="5" selection-start-line="252" selection-start-column="5" selection-end-line="252" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#View#0;class#View#0" expanded="false" />
             <element signature="method#createGUI#0;class#View#0" expanded="false" />
             <element signature="method#createTabbedPanel#0;class#View#0" expanded="false" />
             <element signature="method#createPanel#0;class#View#0" expanded="false" />
             <element signature="method#createNotePanel#0;class#View#0" expanded="false" />
             <element signature="method#createTextArea#0;class#View#0" expanded="false" />
             <element signature="method#createSearchField#0;class#View#0" expanded="false" />
-            <element signature="e#6457#6612#0" expanded="true" />
-            <element signature="e#6611#6612#0" expanded="true" />
-            <element signature="e#7442#7600#0" expanded="true" />
-            <element signature="e#7599#7600#0" expanded="true" />
+            <element signature="e#6642#6797#0" expanded="true" />
+            <element signature="e#6796#6797#0" expanded="true" />
+            <element signature="e#7627#7785#0" expanded="true" />
+            <element signature="e#7784#7785#0" expanded="true" />
             <element signature="method#createAddNoteButton#0;class#View#0" expanded="false" />
             <element signature="method#createDeleteNoteButton#0;class#View#0" expanded="false" />
             <element signature="method#setTabs#0;class#View#0" expanded="false" />
             <element signature="method#setNewTab#0;class#View#0" expanded="false" />
+            <element signature="e#8896#8897#0" expanded="true" />
+            <element signature="e#8947#8948#0" expanded="true" />
             <element signature="method#setMainPanel#0;class#View#0" expanded="false" />
             <element signature="method#setTextArea#0;class#View#0" expanded="false" />
-            <element signature="e#9654#9892#0" expanded="true" />
-            <element signature="e#9891#9892#0" expanded="true" />
+            <element signature="method#setListeners#0;class#View#0" expanded="false" />
+            <element signature="e#9798#9958#0" expanded="true" />
+            <element signature="e#9957#9958#0" expanded="true" />
+            <element signature="e#9997#10186#0" expanded="true" />
+            <element signature="e#10185#10186#0" expanded="true" />
+            <element signature="e#10225#10416#0" expanded="true" />
+            <element signature="e#10415#10416#0" expanded="true" />
+            <element signature="class#DocListener#0;class#View#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -910,15 +934,13 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#searchTextInsert#0;class#Controller#0" expanded="false" />
-            <element signature="method#changeTab#0;class#Controller#0" expanded="false" />
-            <element signature="method#createNote#0;class#Controller#0" expanded="false" />
-            <element signature="method#removeNote#0;class#Controller#0" expanded="false" />
-            <element signature="method#openNote#0;class#Controller#0" expanded="false" />
-            <element signature="method#textNoteChange#0;class#Controller#0" expanded="false" />
-            <element signature="e#1921#1922#0" expanded="true" />
-            <element signature="e#1971#1972#0" expanded="true" />
+            <element signature="e#644#645#0" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -929,15 +951,18 @@
           <caret line="57" column="45" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1119#1120#0" expanded="true" />
-            <element signature="e#1168#1169#0" expanded="true" />
-            <element signature="e#1205#1206#0" expanded="true" />
-            <element signature="e#1266#1267#0" expanded="true" />
-            <element signature="method#createNewTab#0;class#Model#0" expanded="false" />
-            <element signature="e#2105#2106#0" expanded="true" />
-            <element signature="e#2146#2147#0" expanded="true" />
-            <element signature="e#2183#2184#0" expanded="true" />
-            <element signature="e#2229#2230#0" expanded="true" />
+            <element signature="method#connectDataBase#0;class#Model#0" expanded="false" />
+            <element signature="method#downloadSections#0;class#Model#0" expanded="false" />
+            <element signature="method#getSections#0;class#Model#0" expanded="false" />
+            <element signature="e#1129#1130#0" expanded="true" />
+            <element signature="e#1161#1162#0" expanded="true" />
+            <element signature="method#removeNote#0;class#Model#0" expanded="false" />
+            <element signature="e#2166#2167#0" expanded="true" />
+            <element signature="e#2207#2208#0" expanded="true" />
+            <element signature="e#2247#2248#0" expanded="true" />
+            <element signature="e#2283#2284#0" expanded="true" />
+            <element signature="e#2320#2321#0" expanded="true" />
+            <element signature="e#2363#2364#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -948,15 +973,18 @@
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1119#1120#0" expanded="true" />
-            <element signature="e#1168#1169#0" expanded="true" />
-            <element signature="e#1205#1206#0" expanded="true" />
-            <element signature="e#1266#1267#0" expanded="true" />
-            <element signature="method#createNewTab#0;class#Model#0" expanded="false" />
-            <element signature="e#2105#2106#0" expanded="true" />
-            <element signature="e#2146#2147#0" expanded="true" />
-            <element signature="e#2183#2184#0" expanded="true" />
-            <element signature="e#2229#2230#0" expanded="true" />
+            <element signature="method#connectDataBase#0;class#Model#0" expanded="false" />
+            <element signature="method#downloadSections#0;class#Model#0" expanded="false" />
+            <element signature="method#getSections#0;class#Model#0" expanded="false" />
+            <element signature="e#1129#1130#0" expanded="true" />
+            <element signature="e#1161#1162#0" expanded="true" />
+            <element signature="method#removeNote#0;class#Model#0" expanded="false" />
+            <element signature="e#2166#2167#0" expanded="true" />
+            <element signature="e#2207#2208#0" expanded="true" />
+            <element signature="e#2247#2248#0" expanded="true" />
+            <element signature="e#2283#2284#0" expanded="true" />
+            <element signature="e#2320#2321#0" expanded="true" />
+            <element signature="e#2363#2364#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1061,13 +1089,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/av/CustomScrollBarUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26413044">
-          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/javax/swing/JFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33295712">
@@ -1098,35 +1119,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/av/SideBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.944043">
-          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/av/InputInfoDialogFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="92" selection-end-column="5" />
-          <folding>
-            <element signature="e#387#388#0" expanded="false" />
-            <element signature="e#422#423#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/av/YesNoDialogFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="48" selection-start-line="46" selection-start-column="48" selection-end-line="46" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/sqlite-jdbc-3.7.2.jar!/org/sqlite/Conn.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1523702">
@@ -1145,30 +1137,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/av/FlatButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33521444">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Observer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23978686">
-          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Observable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/javax/swing/ListModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.09946714">
@@ -1182,83 +1150,6 @@
         <state vertical-scroll-proportion="-4.268206">
           <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/av/IController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/av/HeaderList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.047957372">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#changeListModel#0;class#HeaderList#0" expanded="false" />
-            <element signature="method#setTextHeader#0;class#HeaderList#0" expanded="false" />
-            <element signature="method#textChanged#0;class#HeaderList#0" expanded="false" />
-            <element signature="method#deleteNote#0;class#HeaderList#0" expanded="false" />
-            <element signature="method#deleteEmptyNote#0;class#HeaderList#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/av/Note.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.1580818">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="e#196#197#0" expanded="true" />
-            <element signature="e#228#229#0" expanded="true" />
-            <element signature="e#258#259#0" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#534#535#0" expanded="true" />
-            <element signature="e#563#564#0" expanded="true" />
-            <element signature="e#594#595#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#652#653#0" expanded="true" />
-            <element signature="e#679#680#0" expanded="true" />
-            <element signature="e#719#720#0" expanded="true" />
-            <element signature="e#751#752#0" expanded="true" />
-            <element signature="e#1048#1049#0" expanded="true" />
-            <element signature="e#1080#1081#0" expanded="true" />
-            <element signature="e#1120#1121#0" expanded="true" />
-            <element signature="e#1152#1153#0" expanded="true" />
-            <element signature="e#1183#1184#0" expanded="true" />
-            <element signature="e#1217#1218#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/av/NewListRenderer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="25" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/av/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="64" column="45" selection-start-line="64" selection-start-column="37" selection-end-line="64" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1119#1120#0" expanded="true" />
-            <element signature="e#1168#1169#0" expanded="true" />
-            <element signature="e#1205#1206#0" expanded="true" />
-            <element signature="e#1266#1267#0" expanded="true" />
-            <element signature="method#createNewTab#0;class#Model#0" expanded="false" />
-            <element signature="e#2105#2106#0" expanded="true" />
-            <element signature="e#2146#2147#0" expanded="true" />
-            <element signature="e#2183#2184#0" expanded="true" />
-            <element signature="e#2229#2230#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1287,14 +1178,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/av/Header.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38010657">
-          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/av/Service.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8081705">
@@ -1308,13 +1191,111 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/javax/swing/DefaultSingleSelectionModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="156" column="58" selection-start-line="156" selection-start-column="58" selection-end-line="156" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/av/FlatButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61634105">
+          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/av/NewListRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="25" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Observer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33521444">
+          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-oracle/src.zip!/java/util/Observable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.047404">
+          <caret line="61" column="13" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/av/IController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33521444">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/av/YesNoDialogFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14387211">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/av/InputInfoDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/av/Note.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/av/MainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
           <folding>
-            <element signature="e#477#783#0" expanded="true" />
-            <element signature="e#782#783#0" expanded="true" />
+            <element signature="e#533#839#0" expanded="true" />
+            <element signature="e#838#839#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/av/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="28" selection-start-line="70" selection-start-column="28" selection-end-line="70" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#connectDataBase#0;class#Model#0" expanded="false" />
+            <element signature="method#downloadSections#0;class#Model#0" expanded="false" />
+            <element signature="method#getSections#0;class#Model#0" expanded="false" />
+            <element signature="e#1129#1130#0" expanded="true" />
+            <element signature="e#1161#1162#0" expanded="true" />
+            <element signature="method#removeNote#0;class#Model#0" expanded="false" />
+            <element signature="e#2166#2167#0" expanded="true" />
+            <element signature="e#2207#2208#0" expanded="true" />
+            <element signature="e#2247#2248#0" expanded="true" />
+            <element signature="e#2283#2284#0" expanded="true" />
+            <element signature="e#2320#2321#0" expanded="true" />
+            <element signature="e#2363#2364#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1322,45 +1303,68 @@
     <entry file="file://$PROJECT_DIR$/src/com/av/View.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="282" column="0" selection-start-line="282" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
+          <caret line="276" column="23" selection-start-line="276" selection-start-column="23" selection-end-line="276" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#View#0;class#View#0" expanded="false" />
             <element signature="method#createGUI#0;class#View#0" expanded="false" />
             <element signature="method#createTabbedPanel#0;class#View#0" expanded="false" />
             <element signature="method#createPanel#0;class#View#0" expanded="false" />
             <element signature="method#createNotePanel#0;class#View#0" expanded="false" />
             <element signature="method#createTextArea#0;class#View#0" expanded="false" />
             <element signature="method#createSearchField#0;class#View#0" expanded="false" />
-            <element signature="e#6457#6612#0" expanded="true" />
-            <element signature="e#6611#6612#0" expanded="true" />
-            <element signature="e#7442#7600#0" expanded="true" />
-            <element signature="e#7599#7600#0" expanded="true" />
+            <element signature="e#6642#6797#0" expanded="true" />
+            <element signature="e#6796#6797#0" expanded="true" />
+            <element signature="e#7627#7785#0" expanded="true" />
+            <element signature="e#7784#7785#0" expanded="true" />
             <element signature="method#createAddNoteButton#0;class#View#0" expanded="false" />
             <element signature="method#createDeleteNoteButton#0;class#View#0" expanded="false" />
             <element signature="method#setTabs#0;class#View#0" expanded="false" />
             <element signature="method#setNewTab#0;class#View#0" expanded="false" />
+            <element signature="e#8896#8897#0" expanded="true" />
+            <element signature="e#8947#8948#0" expanded="true" />
             <element signature="method#setMainPanel#0;class#View#0" expanded="false" />
             <element signature="method#setTextArea#0;class#View#0" expanded="false" />
-            <element signature="e#9654#9892#0" expanded="true" />
-            <element signature="e#9891#9892#0" expanded="true" />
+            <element signature="method#setListeners#0;class#View#0" expanded="false" />
+            <element signature="e#9798#9958#0" expanded="true" />
+            <element signature="e#9957#9958#0" expanded="true" />
+            <element signature="e#9997#10186#0" expanded="true" />
+            <element signature="e#10185#10186#0" expanded="true" />
+            <element signature="e#10225#10416#0" expanded="true" />
+            <element signature="e#10415#10416#0" expanded="true" />
+            <element signature="class#DocListener#0;class#View#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/av/CustomScrollBarUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/av/Header.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5180587">
+          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/av/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41207814">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6354402">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#searchTextInsert#0;class#Controller#0" expanded="false" />
-            <element signature="method#changeTab#0;class#Controller#0" expanded="false" />
-            <element signature="method#createNote#0;class#Controller#0" expanded="false" />
-            <element signature="method#removeNote#0;class#Controller#0" expanded="false" />
-            <element signature="method#openNote#0;class#Controller#0" expanded="false" />
-            <element signature="method#textNoteChange#0;class#Controller#0" expanded="false" />
-            <element signature="e#1921#1922#0" expanded="true" />
-            <element signature="e#1971#1972#0" expanded="true" />
+            <element signature="e#644#645#0" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#722#723#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
+            <element signature="e#840#841#0" expanded="true" />
           </folding>
         </state>
       </provider>

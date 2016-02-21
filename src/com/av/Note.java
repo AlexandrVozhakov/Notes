@@ -21,7 +21,7 @@ public class Note {
 
 
         this.setHeader(text);
-        this.setText("");
+        this.setText("Any text");
         this.setTime(Service.date("HH:mm"));
         this.setDate(Service.date("dd  MMMM  yyyy"));
     }
