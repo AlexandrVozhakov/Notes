@@ -2,23 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8a2596fe-3bb8-4dd2-8e4e-74e75aba0501" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialog$1.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialog$3.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialog.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$5.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$8.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$9.class" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialogFrame$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialogFrame$2.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialogFrame$3.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialogFrame.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/av/HeaderList.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/av/SideBar.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialogFrame$2.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/InputInfoDialog$2.class" />
       <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/av/InputInfoDialogFrame.java" afterPath="$PROJECT_DIR$/src/com/av/InputInfoDialog.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/Controller.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/Controller.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/FlatButton.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/FlatButton.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/MainFrame$1.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/MainFrame$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/MainFrame.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/MainFrame.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/Model.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/Model.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/Note.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/Note.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$1.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$2.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$3.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$4.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$5.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$6.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$6.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$7.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$7.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Note/com/av/View$DocListener.class" afterPath="$PROJECT_DIR$/out/production/Note/com/av/View$DocListener.class" />
