@@ -7,7 +7,7 @@ import java.awt.Color;
 /**
  * Created by av on 23.01.16.
  */
-public class NewListRenderer implements ListCellRenderer{
+public class SideBarListRenderer implements ListCellRenderer{
 
     GlobalDimension dimension = GlobalDimension.getInstance();
 
@@ -21,12 +21,13 @@ public class NewListRenderer implements ListCellRenderer{
         JLabel renderer = (JLabel) defaultRenderer.getListCellRendererComponent(list, value, index,
                                                                                 isSelected, cellHasFocus);
 
-/*        if (isSelected) {
+        if (isSelected) {
             renderer.setBackground(new Color(255, 232, 82));
-        }*/
+        }
 
         renderer.setFont(Service.globalFont);
         renderer.setForeground(Color.DARK_GRAY);
+        renderer.setBorder(null);
         renderer.setPreferredSize(new Dimension(800, dimension.getSearchPanel().height + 2));
         renderer.setIcon(icon);
         renderer.setHorizontalTextPosition(JLabel.LEFT);

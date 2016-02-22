@@ -20,7 +20,7 @@ public class Controller implements IController{
 
     public void changeTab(int index){
 
-        if (index == model.getSections().size()){
+        if (index == model.getTabsModel().size() -1){
             InputInfoDialog dialog = new InputInfoDialog("Name tab", View.createNote);
             if(!dialog.getString().equals("")){
                 model.addSection(dialog.getString());

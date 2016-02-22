@@ -2,6 +2,7 @@ package com.av;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 /**
@@ -10,8 +11,9 @@ import java.util.Observable;
 public class Model extends Observable{
 
 
-    private ArrayList<String> sections;
+    //private ArrayList<String> sections;
     private DefaultListModel<Note> listModel;
+    private DefaultListModel<String> tabsModel;
     private int selectedNote = 0;
 
     private DataBase db;
@@ -19,7 +21,9 @@ public class Model extends Observable{
     public Model(){
 
         listModel = new DefaultListModel<Note>();
-        sections = new ArrayList<String>();
+        tabsModel = new DefaultListModel<String>();
+
+        //sections = new ArrayList<String>();
         connectDataBase();
         setSections();
     }
@@ -41,20 +45,24 @@ public class Model extends Observable{
     }
 
     private void setSections(){
-        sections.addAll(downloadSections());
-    }
 
-    public ArrayList<String> getSections(){
-
-        return new ArrayList<String>(sections);
+        List<String> tabs = downloadSections();
+        for(String tab : tabs)
+            tabsModel.addElement(tab);
+        tabsModel.addElement("+");
     }
 
     public String getSection(int index){
-        return sections.get(index);
+        return tabsModel.get(index);
     }
 
     public DefaultListModel<Note> getListModel(){
         return listModel;
+    }
+
+    public DefaultListModel<String> getTabsModel(){
+
+        return tabsModel;
     }
 
     private void changeListModel(){
@@ -67,11 +75,16 @@ public class Model extends Observable{
 
     public void addSection(String name) {
 
-        sections.add(name);
-        db.addSection(name);
+        setSection(tabsModel.size() - 1 ,name);
+    }
+
+    public void setSection(int index, String name){
+
+        tabsModel.add(index, name);
+        //db.addSection(name);
         changeListModel();
         setChanged();
-        notifyObservers(sections);
+        notifyObservers();
     }
 
     public void changeSection(int index) {

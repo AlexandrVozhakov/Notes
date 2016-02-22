@@ -2,8 +2,6 @@ package com.av;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
@@ -26,7 +24,7 @@ public class View extends JPanel implements Observer{
     public JPanel mainPanel;
     private DocListener docListener;
     private JList<Note> headerList;
-    private JTabbedPane tabbedPanel;
+    private JList<String> tabList;
     private Model model;
     IController controller;
 
@@ -38,7 +36,9 @@ public class View extends JPanel implements Observer{
         dimension = GlobalDimension.getInstance();
         docListener = new DocListener();
         headerList = new JList<Note>(model.getListModel());
-        headerList.setCellRenderer(new NewListRenderer());
+        headerList.setCellRenderer(new SideBarListRenderer());
+        tabList = new JList<String>(model.getTabsModel());
+
         createGUI();
         setListeners();
     }
@@ -47,24 +47,24 @@ public class View extends JPanel implements Observer{
     public void createGUI(){
 
         //sideBarScrollPane.getVerticalScrollBar().setUI(new CustomScrollbarUI());
-        mainPanel = createNotePanel();
-        tabbedPanel = createTabbedPanel();
+        mainPanel = createMainPanel();
 
-        this.add(tabbedPanel, BorderLayout.CENTER);
-        this.setVisible(true);
-    }
+        JPanel tabsPanel = createPanel(dimension.getTabsPanel(), null, new BorderLayout());
 
-    private JTabbedPane createTabbedPanel(){
+        tabList.setCellRenderer(new TabsBarListRenderer());
+        tabList.setLayoutOrientation (JList.HORIZONTAL_WRAP); // стиль размещения горизонтальный
+        tabList.setVisibleRowCount(1);// управлением количества видимых строк в списке
+        tabList.setSelectedIndex(0);
+        tabList.setBackground(null);
 
-        tabbedPanel = new JTabbedPane();
-        tabbedPanel.setPreferredSize(dimension.getFrame());
-        tabbedPanel.setBackground(null);
-        tabbedPanel.setBorder(null);
-        tabbedPanel.setFont(new Font(null, Font.BOLD, 18));
-        tabbedPanel.addTab("+", mainPanel);
-        tabbedPanel.addChangeListener(tabChangeListener);
-        this.setTabs(model.getSections());
-        return tabbedPanel;
+        JScrollPane sp = new JScrollPane(tabList);
+        sp.setBorder(null);
+        tabsPanel.add(sp, BorderLayout.CENTER);
+
+        this.setPreferredSize(dimension.getFrame());
+        this.add(tabsPanel, BorderLayout.NORTH);
+        this.add(mainPanel, BorderLayout.SOUTH);
+        //this.setVisible(true);
     }
 
     private JPanel createPanel(Dimension dimension, Color color, LayoutManager layout){
@@ -75,9 +75,9 @@ public class View extends JPanel implements Observer{
         return panel;
     }
 
-    private JPanel createNotePanel(){
+    private JPanel createMainPanel(){
 
-        JPanel rootPanel = createPanel(dimension.getRootPanel(), null, new BorderLayout());
+        JPanel mainPanel = createPanel(dimension.getRootPanel(), null, new BorderLayout());
         JPanel sideBarPanel = createPanel(dimension.getSideBarPanel(), Color.WHITE, new BorderLayout());
         JPanel searchPanel = createPanel(dimension.getSearchPanel(), Color.WHITE, new BorderLayout());
         JScrollPane listScrollPane = new JScrollPane(headerList);
@@ -145,10 +145,10 @@ public class View extends JPanel implements Observer{
         sideBarPanel.add(searchPanel, BorderLayout.NORTH);
         sideBarPanel.add(listPanel, BorderLayout.SOUTH);
 
-        rootPanel.add(sideBarPanel, BorderLayout.WEST);
-        rootPanel.add(textPanel, BorderLayout.EAST);
+        mainPanel.add(sideBarPanel, BorderLayout.WEST);
+        mainPanel.add(textPanel, BorderLayout.EAST);
 
-        return rootPanel;
+        return mainPanel;
     }
 
     private JTextArea createTextArea(){
@@ -226,37 +226,7 @@ public class View extends JPanel implements Observer{
 
         deleteNote = new FlatButton("Delete.png");
         deleteNote.setLocation(deleteNote.getWidth() * 3, 5);
-        deleteNote.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-                //controller.removeNote(headerList.getSelectedIndex());
-            }
-        });
         return deleteNote;
-    }
-
-    private void setTabs(ArrayList<String> tabs){
-
-        for(String t : tabs)
-            setNewTab(t);
-    }
-
-    private void setNewTab(String name) {
-
-        tabbedPanel.removeChangeListener(tabChangeListener);
-        tabbedPanel.add(null, name, tabbedPanel.getTabCount() - 1);
-        tabbedPanel.setSelectedIndex(tabbedPanel.getTabCount() - 2);
-        tabbedPanel.addChangeListener(tabChangeListener);
-    }
-
-    private void setSelectedTab(int index){
-        tabbedPanel.setSelectedIndex(index);
-    }
-
-    private void setMainPanel(){
-        tabbedPanel.setComponentAt(0, mainPanel);
-        //tabbedPanel.addTab(name, component);
     }
 
     private void setTextArea(String text){
@@ -276,7 +246,8 @@ public class View extends JPanel implements Observer{
     public void update(Observable o, Object arg) {
         //updateTabs();
         if(arg instanceof ArrayList)
-            setNewTab(model.getSection(tabbedPanel.getTabCount() - 1));
+            System.out.println(1);
+            //setNewTab(model.getSection(tabbedPanel.getTabCount() - 1));
 
         if(arg instanceof DefaultListModel)
             headerList.setModel(model.getListModel());
@@ -296,6 +267,14 @@ public class View extends JPanel implements Observer{
                 controller.removeNote(headerList.getSelectedIndex());
             }
         });
+
+        tabList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                controller.changeTab(tabList.getSelectedIndex());
+            }
+        });
+
         headerList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -305,12 +284,12 @@ public class View extends JPanel implements Observer{
 
     }
 
-    ChangeListener tabChangeListener = new ChangeListener() {
+    /*ChangeListener tabChangeListener = new ChangeListener() {
         @Override
         public void stateChanged(ChangeEvent e) {
             controller.changeTab(tabbedPanel.getSelectedIndex());
         }
-    };
+    };*/
 
     class DocListener implements DocumentListener {
 
