@@ -31,8 +31,8 @@ public class Controller implements IController{
     }
 
 
-    public void createNote() {
-        model.createNewNote();
+    public void createNote(int section_id) {
+        model.createNewNote(section_id);
     }
 
 

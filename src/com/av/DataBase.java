@@ -68,13 +68,13 @@ public class DataBase {
 
     public void insertNote(int section_id, String text) {
 
+        String date = Service.date("d  MMMM  yyyy");
         try {
-            statement.execute("INSERT INTO notes ('section_id', 'header', 'text') VALUES " +
-                    "('"+ section_id +"', 'new note', '"+ text +"'); ");
+            statement.execute("INSERT INTO notes ('section_id', 'header', 'date', 'text') VALUES " +
+                    "('"+ section_id +"', 'new note','"+ date +"', '"+ text +"'); ");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        //System.out.println(1);
     }
 
     public void updateNote(String text){
@@ -111,15 +111,15 @@ public class DataBase {
         return sections;
     }
 
-    public ArrayList<Note> getNotes(String param){
+    public ArrayList<Note> getNotes(int section_id){
 
         ArrayList<Note> notes = new ArrayList<Note>();
         try {
-            resSet = statement.executeQuery("SELECT * FROM notes WHERE section = " + param);
+            resSet = statement.executeQuery("SELECT * FROM notes WHERE section_id = " + section_id);
             while(resSet.next())
             {
                 Note n = new Note();
-                n.setHeader(resSet.getString("name"));
+                n.setHeader(resSet.getString("header"));
                 n.setDate(resSet.getString("date"));
                 n.setText(resSet.getString("text"));
                 notes.add(n);

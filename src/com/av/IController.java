@@ -7,7 +7,7 @@ public interface IController {
 
     void changeTab(int index);
     void searchTextInsert(String text);
-    void createNote();
+    void createNote(int index);
     void removeNote(int index);
     void openNote(int index);
     void textNoteChange(int index, String text);

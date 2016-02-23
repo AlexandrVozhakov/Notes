@@ -22,7 +22,7 @@ class CustomScrollbarUI extends MetalScrollBarUI {
     protected void paintThumb(Graphics g, JComponent c, Rectangle tb ) {
 
         g.setColor( Color.LIGHT_GRAY );
-        g.fillRect( tb.x +10 , tb.y, tb.width + 10, tb.height );
+        g.fillRoundRect(tb.x + 8 , tb.y, tb.width - 8, tb.height, 10, 10 );
     }
 
     @Override

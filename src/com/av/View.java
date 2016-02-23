@@ -46,7 +46,6 @@ public class View extends JPanel implements Observer{
 
     public void createGUI(){
 
-        //sideBarScrollPane.getVerticalScrollBar().setUI(new CustomScrollbarUI());
         mainPanel = createMainPanel();
 
         JPanel tabsPanel = createPanel(dimension.getTabsPanel(), null, new BorderLayout());
@@ -58,6 +57,7 @@ public class View extends JPanel implements Observer{
         tabList.setBackground(null);
 
         JScrollPane sp = new JScrollPane(tabList);
+
         sp.setBorder(null);
         tabsPanel.add(sp, BorderLayout.CENTER);
 
@@ -115,6 +115,7 @@ public class View extends JPanel implements Observer{
 
         listScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         listScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        listScrollPane.getVerticalScrollBar().setUI(new CustomScrollbarUI());
         listScrollPane.setBorder(null);
 
         listPanel.add(listScrollPane, BorderLayout.CENTER);
@@ -244,13 +245,8 @@ public class View extends JPanel implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        //updateTabs();
-        if(arg instanceof ArrayList)
-            System.out.println(1);
-            //setNewTab(model.getSection(tabbedPanel.getTabCount() - 1));
 
-        if(arg instanceof DefaultListModel)
-            headerList.setModel(model.getListModel());
+        headerList.setModel(model.getListModel());
     }
 
     public void setListeners(){
@@ -258,7 +254,7 @@ public class View extends JPanel implements Observer{
         createNote.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                controller.createNote();
+                controller.createNote(tabList.getSelectedIndex());
             }
         });
         deleteNote.addMouseListener(new MouseAdapter() {
