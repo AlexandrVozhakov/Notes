@@ -37,7 +37,16 @@ public class Controller implements IController{
 
 
     public void removeNote(int index){
-        model.removeNote(index);
+
+        if(index < 0)
+            return;
+
+        if(!model.getNote(index).getText().equals("")) {
+            YesNoDialogFrame dialog = new YesNoDialogFrame("delete this note?", View.createNote);
+            if(dialog.getResult())
+                model.removeNote(index);
+        } else
+            model.removeNote(index);
     }
 
 
@@ -46,7 +55,7 @@ public class Controller implements IController{
     }
 
 
-    public void textNoteChange(int index, String text) {
-
+    public void textNoteChange(int note_id, int section_id, String text) {
+        model.editNote(note_id, section_id, text);
     }
 }

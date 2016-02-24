@@ -10,5 +10,5 @@ public interface IController {
     void createNote(int index);
     void removeNote(int index);
     void openNote(int index);
-    void textNoteChange(int index, String text);
+    void textNoteChange(int note_id, int section_id, String text);
 }

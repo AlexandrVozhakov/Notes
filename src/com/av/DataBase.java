@@ -27,7 +27,6 @@ public class DataBase {
         return instance;
     }
 
-
     // Data Base connecting
     public static void connect() {
         connection = null;
@@ -66,21 +65,23 @@ public class DataBase {
         //System.out.println("Таблица создана или уже существует.");
     }
 
-    public void insertNote(int section_id, String text) {
+    public void addNote(int section_id) {
 
         String date = Service.date("d  MMMM  yyyy");
         try {
             statement.execute("INSERT INTO notes ('section_id', 'header', 'date', 'text') VALUES " +
-                    "('"+ section_id +"', 'new note','"+ date +"', '"+ text +"'); ");
+                    "('"+ (section_id + 1) +"', 'New note','"+ date +"', ''); ");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void updateNote(String text){
+    public void updateNote(Note note, int section_id){
 
         try {
-            statement.executeUpdate("UPDATE notes SET text = '"+ text +"' WHERE id = " + 1);
+            statement.executeUpdate("UPDATE notes SET text = '"+ note.getText() +"', " +
+                    "header = '"+ note.getHeader() +"' WHERE id = " +
+                    note.getId() + " AND section_id = '"+ (section_id + 1) +"'");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -115,10 +116,11 @@ public class DataBase {
 
         ArrayList<Note> notes = new ArrayList<Note>();
         try {
-            resSet = statement.executeQuery("SELECT * FROM notes WHERE section_id = " + section_id);
+            resSet = statement.executeQuery("SELECT * FROM notes WHERE section_id = " + (section_id + 1));
             while(resSet.next())
             {
                 Note n = new Note();
+                n.setId(resSet.getInt("id"));
                 n.setHeader(resSet.getString("header"));
                 n.setDate(resSet.getString("date"));
                 n.setText(resSet.getString("text"));
@@ -131,6 +133,7 @@ public class DataBase {
     }
 
     public void closeDB() {
+
         try {
             connection.close();
             statement.close();
@@ -138,7 +141,6 @@ public class DataBase {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        //System.out.println("Соединения закрыты");
     }
 
 }

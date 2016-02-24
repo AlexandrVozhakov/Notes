@@ -29,7 +29,7 @@ public class TabsBarListRenderer implements ListCellRenderer {
 
         FontMetrics fontMetrics = renderer.getFontMetrics(renderer.getFont());
         int text_width = fontMetrics.stringWidth(renderer.getText());
-        renderer.setPreferredSize(new Dimension(text_width, dimension.getBorder()));
+        renderer.setPreferredSize(new Dimension(text_width, dimension.getBorder() - 5));
 
         renderer.setHorizontalAlignment(JLabel.CENTER);
         return renderer;

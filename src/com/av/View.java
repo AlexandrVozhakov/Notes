@@ -56,6 +56,8 @@ public class View extends JPanel implements Observer{
         tabList.setSelectedIndex(0);
         tabList.setBackground(null);
 
+        headerList.setSelectedIndex(0);
+
         JScrollPane sp = new JScrollPane(tabList);
 
         sp.setBorder(null);
@@ -64,6 +66,7 @@ public class View extends JPanel implements Observer{
         this.setPreferredSize(dimension.getFrame());
         this.add(tabsPanel, BorderLayout.NORTH);
         this.add(mainPanel, BorderLayout.SOUTH);
+        //showNote(model.getNote(headerList.getSelectedIndex()));
         //this.setVisible(true);
     }
 
@@ -255,6 +258,9 @@ public class View extends JPanel implements Observer{
             @Override
             public void mouseClicked(MouseEvent e) {
                 controller.createNote(tabList.getSelectedIndex());
+                headerList.setSelectedIndex(0);
+                headerList.ensureIndexIsVisible(0);
+                textArea.requestFocus();
             }
         });
         deleteNote.addMouseListener(new MouseAdapter() {
@@ -268,6 +274,9 @@ public class View extends JPanel implements Observer{
             @Override
             public void mouseClicked(MouseEvent e) {
                 controller.changeTab(tabList.getSelectedIndex());
+                headerList.setSelectedIndex(0);
+                headerList.ensureIndexIsVisible(0);
+                showNote(model.getNote(headerList.getSelectedIndex()));
             }
         });
 
@@ -302,7 +311,7 @@ public class View extends JPanel implements Observer{
         private void textChanged() {
 
             text = textArea.getText().trim();
-            //controller.textNoteChange(headerList.getSelectedIndex(), text);
+            controller.textNoteChange(headerList.getSelectedIndex(), tabList.getSelectedIndex(), text);
             headerList.repaint();
         }
     }

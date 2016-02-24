@@ -5,6 +5,7 @@ package com.av;
  */
 public class Note {
 
+    private int id;
     private String header;
     private String date;
     private String time;
@@ -19,11 +20,18 @@ public class Note {
 
     private void createNote(String text){
 
-
         this.setHeader(text);
-        this.setText("Any text");
+        this.setText("");
         this.setTime(Service.date("HH:mm"));
         this.setDate(Service.date("dd  MMMM  yyyy"));
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getHeader() {

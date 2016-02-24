@@ -14,6 +14,8 @@ public class Model extends Observable{
     private DefaultListModel<Note> listModel;
     private DefaultListModel<String> tabsModel;
     private int selectedNote = 0;
+    private boolean flag = true;
+    private int i;
 
     private DataBase db;
 
@@ -25,6 +27,7 @@ public class Model extends Observable{
         //sections = new ArrayList<String>();
         connectDataBase();
         setSections();
+        setNotes(0);
     }
 
     private void connectDataBase(){
@@ -59,7 +62,10 @@ public class Model extends Observable{
     }
 
     private void setNotes(int section_id){
+
         List<Note> notes = downloadNotes(section_id);
+        listModel.clear();
+
         for(Note note : notes)
             listModel.add(0, note);
     }
@@ -103,23 +109,68 @@ public class Model extends Observable{
 
     public void createNewNote(int section_id){
 
-        listModel.add(0, new Note());
-        db.insertNote(section_id, "New note");
+        db.addNote(section_id);
+        setNotes(section_id);
         setChanged();
         notifyObservers(listModel);
 
     }
 
-    public void editNote(int noteId, String text){
-        
-        //db.insertNote(pointerCurrentSection, text);
+    public void editNote(int note_id, int section_id, String text){
+
+        // string for header
+        String t = text;
+        if(text.contains("\n"))
+            t = text.substring(0, text.indexOf("\n"));
+
+        Note note = listModel.get(note_id);
+        note.setHeader(t);
+        note.setText(text);
+
+        saveNote(note, section_id);
     }
 
     public void removeNote(int index){
 
-        if(index < 0)
-            return;
         listModel.remove(index);
+    }
+
+    private void saveNote(Note note, int section_id){
+
+        //if(pause())
+            db.updateNote(note, section_id);
+
+    }
+
+    private boolean pause(){
+        i = 0;
+
+        if(flag) {
+
+            flag = false;
+
+            final Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    do {
+                        try {
+
+                            Thread.sleep(500);
+                            i++;
+
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    } while (i < 2);
+
+                    flag = true;
+                    System.out.println("save");
+                }
+            });
+            thread.start();    //Запуск потока
+        }
+        return flag;
     }
 
     public void selectNote(int index){
