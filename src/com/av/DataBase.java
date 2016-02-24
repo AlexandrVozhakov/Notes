@@ -87,6 +87,15 @@ public class DataBase {
         }
     }
 
+    public void deleteNote(int id){
+
+        try {
+            statement.executeUpdate("DELETE FROM notes WHERE id = " + id + ";");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addSection(String name) {
 
         try {

@@ -132,7 +132,9 @@ public class Model extends Observable{
 
     public void removeNote(int index){
 
+        int id = listModel.get(index).getId();
         listModel.remove(index);
+        db.deleteNote(id);
     }
 
     private void saveNote(Note note, int section_id){
