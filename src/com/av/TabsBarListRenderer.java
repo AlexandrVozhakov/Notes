@@ -19,9 +19,9 @@ public class TabsBarListRenderer implements ListCellRenderer {
         JLabel renderer = (JLabel) defaultRenderer.getListCellRendererComponent(list, value, index,
                 isSelected, cellHasFocus);
 
-        /*if (isSelected) {
-            renderer.setBackground(new Color(255, 232, 82));
-        }*/
+        if (isSelected) {
+            renderer.setBackground(Color.lightGray);
+        }
 
         renderer.setBorder(null);
         renderer.setFont(new Font(null, Font.BOLD, 19));

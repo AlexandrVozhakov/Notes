@@ -1,33 +1,30 @@
 package com.av;
 
-import com.sun.awt.AWTUtilities;
-
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.geom.RoundRectangle2D;
 
 /**
- * Created by av on 11.02.16.
+ * Created by av on 25.02.16.
  */
-public class YesNoDialogFrame extends JDialog {
-
+public class TabSettingsDialog extends JDialog {
     private boolean resultDialog;
 
     public boolean getResult(){
         return resultDialog;
     }
 
-    public YesNoDialogFrame(String showText, Component component){
+    public TabSettingsDialog(String showText, Point point){
+
         //super((Window) component);
-        this.setLocationRelativeTo(component);
+        setLocation(point);
+        //this.setLocationRelativeTo(component);
         setSize(500, 200);
         //setLocationRelativeTo(null);
-        setModalityType(ModalityType.TOOLKIT_MODAL);
+        setModalityType(Dialog.ModalityType.TOOLKIT_MODAL);
         setUndecorated(true);
 
         setLayout(new BorderLayout());
@@ -51,7 +48,7 @@ public class YesNoDialogFrame extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 resultDialog = true;
-                YesNoDialogFrame.this.setVisible(false);
+                TabSettingsDialog.this.setVisible(false);
             }
         });
 
@@ -60,11 +57,11 @@ public class YesNoDialogFrame extends JDialog {
             public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER){
                     resultDialog = true;
-                    YesNoDialogFrame.this.setVisible(false);
+                    TabSettingsDialog.this.setVisible(false);
                 }
                 else if(e.getKeyCode() == KeyEvent.VK_ESCAPE){
                     resultDialog = false;
-                    YesNoDialogFrame.this.setVisible(false);
+                    TabSettingsDialog.this.setVisible(false);
                 }
             }
         });
@@ -74,7 +71,7 @@ public class YesNoDialogFrame extends JDialog {
             @Override
             public void mouseClicked(MouseEvent e) {
                 resultDialog = false;
-                YesNoDialogFrame.this.setVisible(false);
+                TabSettingsDialog.this.setVisible(false);
             }
         });
 
@@ -84,12 +81,6 @@ public class YesNoDialogFrame extends JDialog {
 
         add(ioPanel, BorderLayout.CENTER);
         add(butPanel, BorderLayout.SOUTH);
-
-        AWTUtilities.setWindowOpacity(this, 0.7f);
-        //AWTUtilities.setWindowShape(this, new RoundRectangle2D.Double(0, 0, 490, 190, 10, 10));
-
         setVisible(true);
-
     }
-
 }

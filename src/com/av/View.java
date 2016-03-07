@@ -6,7 +6,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -19,12 +18,12 @@ public class View extends JPanel implements Observer{
     private JLabel date;
     private GlobalDimension dimension;
     private JTextArea textArea;
-    public static FlatButton createNote;
-    public static FlatButton deleteNote;
+    public static FlatButton createNoteButton;
+    public static FlatButton deleteNoteButton;
     public JPanel mainPanel;
     private DocListener docListener;
     private JList<Note> headerList;
-    private JList<String> tabList;
+    private JList<Section> tabList;
     private Model model;
     IController controller;
 
@@ -35,9 +34,9 @@ public class View extends JPanel implements Observer{
         //create frame size
         dimension = GlobalDimension.getInstance();
         docListener = new DocListener();
-        headerList = new JList<Note>(model.getListModel());
+        headerList = new JList<Note>(model.getHeadersModel());
         headerList.setCellRenderer(new SideBarListRenderer());
-        tabList = new JList<String>(model.getTabsModel());
+        tabList = new JList<Section>(model.getTabsModel());
 
         createGUI();
         setListeners();
@@ -66,7 +65,7 @@ public class View extends JPanel implements Observer{
         this.setPreferredSize(dimension.getFrame());
         this.add(tabsPanel, BorderLayout.NORTH);
         this.add(mainPanel, BorderLayout.SOUTH);
-        //showNote(model.getNote(headerList.getSelectedIndex()));
+        showNote(model.getNote(headerList.getSelectedIndex()));
         //this.setVisible(true);
     }
 
@@ -105,15 +104,15 @@ public class View extends JPanel implements Observer{
         //search.setBorder(new LineBorder(Color.LIGHT_GRAY, 1, true));
 
         // create Create button
-        createNote = createAddNoteButton();
-        createNote.setName("Create");
+        createNoteButton = createAddNoteButton();
+        createNoteButton.setName("Create");
 
         // create Delete button
-        deleteNote = createDeleteNoteButton();
-        deleteNote.setName("Delete");
+        deleteNoteButton = createDeleteNoteButton();
+        deleteNoteButton.setName("Delete");
 
         // create date label
-        date = new JLabel(Service.date("d  MMMM  yyyy"));
+        date = new JLabel(Service.date());
         date.setFont(new Font(null, Font.ITALIC, 19));
 
         listScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
@@ -124,8 +123,8 @@ public class View extends JPanel implements Observer{
         listPanel.add(listScrollPane, BorderLayout.CENTER);
         searchPanel.add(search, BorderLayout.CENTER);
 
-        createButtonPanel.add(createNote);
-        controlButtonPanel.add(deleteNote, BorderLayout.EAST);
+        createButtonPanel.add(createNoteButton);
+        controlButtonPanel.add(deleteNoteButton, BorderLayout.EAST);
         controlPanel.add(createButtonPanel, BorderLayout.WEST);
         controlPanel.add(date, BorderLayout.CENTER);
         controlPanel.add(controlButtonPanel, BorderLayout.EAST);
@@ -158,21 +157,16 @@ public class View extends JPanel implements Observer{
     private JTextArea createTextArea(){
 
         textArea = new JTextArea();
+        DocumentUndoManager undo = DocumentUndoManager.getInstance();
+        undo.registerDocumentHolder(textArea);
+
         textArea.setFont(Service.globalFont);
         textArea.setOpaque(false);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
         textArea.setBackground(null);
         textArea.getDocument().addDocumentListener(docListener);
-        /*textArea.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode() == KeyEvent.VK_DELETE){
-                    //headerList.deleteNote();
-                    //setTextArea(headerList.getSelectedNoteText());
-                }
-            }
-        });*/
+
         return textArea;
     }
 
@@ -198,19 +192,26 @@ public class View extends JPanel implements Observer{
                     textArea.requestFocus();
                 }
             }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                String text = search.getText();
+                if(!text.trim().equals(""))
+                    controller.searchTextInsert(text.trim());
+            }
         });
-        search.getDocument().addDocumentListener(new DocumentListener() {
+        /*search.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
-                //controller.searchTextInsert(search.getText());
+                controller.searchTextInsert(search.getText());
             }
             @Override
             public void removeUpdate(DocumentEvent e) {
-                //controller.searchTextInsert(search.getText());
+                controller.searchTextInsert(search.getText());
             }
             @Override
             public void changedUpdate(DocumentEvent e) {}
-        });
+        });*/
         search.addFocusListener(new FocusAdapter() {
             @Override
             public void focusLost(FocusEvent e) {
@@ -221,26 +222,34 @@ public class View extends JPanel implements Observer{
     }
 
     private FlatButton createAddNoteButton(){
-        createNote = new FlatButton("Create.png");
-        createNote.setLocation(dimension.getBorder(), 5);
-        return createNote;
+        createNoteButton = new FlatButton("Create.png");
+        createNoteButton.setLocation(dimension.getBorder(), 5);
+        return createNoteButton;
     }
 
     private FlatButton createDeleteNoteButton(){
 
-        deleteNote = new FlatButton("Delete.png");
-        deleteNote.setLocation(deleteNote.getWidth() * 3, 5);
-        return deleteNote;
+        deleteNoteButton = new FlatButton("Delete.png");
+        deleteNoteButton.setLocation(deleteNoteButton.getWidth() * 3, 5);
+        return deleteNoteButton;
     }
 
-    private void setTextArea(String text){
+    private void setTextArea(final String text) {
 
-        textArea.getDocument().removeDocumentListener(docListener);
-        textArea.setText(text);
-        textArea.getDocument().addDocumentListener(docListener);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                textArea.getDocument().removeDocumentListener(docListener);
+
+                textArea.setText(text);
+
+                textArea.getDocument().addDocumentListener(docListener);
+            }
+        });
     }
 
     private void showNote(Note note){
+
         setTextArea(note.getText());
         date.setText(note.getDate());
     }
@@ -249,34 +258,47 @@ public class View extends JPanel implements Observer{
     @Override
     public void update(Observable o, Object arg) {
 
-        headerList.setModel(model.getListModel());
+        tabList.setSelectedIndex(model.getSelectedTab());
+        headerList.setModel(model.getHeadersModel());
+        headerList.setSelectedIndex(0);
+        headerList.ensureIndexIsVisible(0);
+        showNote(model.getNote(headerList.getSelectedIndex()));
+        //textArea.requestFocus();
     }
 
     public void setListeners(){
 
-        createNote.addMouseListener(new MouseAdapter() {
+        createNoteButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                controller.createNote(tabList.getSelectedIndex());
-                headerList.setSelectedIndex(0);
-                headerList.ensureIndexIsVisible(0);
-                textArea.requestFocus();
+                controller.createNote(tabList.getSelectedIndex(), "");
+
             }
         });
-        deleteNote.addMouseListener(new MouseAdapter() {
+        deleteNoteButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                controller.removeNote(headerList.getSelectedIndex());
+                controller.deleteNote(headerList.getSelectedIndex());
+            }
+        });
+        textArea.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_DELETE)
+                    controller.deleteNote(headerList.getSelectedIndex());
             }
         });
 
         tabList.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                //if(e.getButton() == MouseEvent.BUTTON3)
+                    tabList.setSelectedIndex(tabList.locationToIndex(e.getPoint()));
                 controller.changeTab(tabList.getSelectedIndex());
-                headerList.setSelectedIndex(0);
-                headerList.ensureIndexIsVisible(0);
-                showNote(model.getNote(headerList.getSelectedIndex()));
+                if(e.getButton() == MouseEvent.BUTTON3) {
+                    Point location = MouseInfo.getPointerInfo().getLocation();
+                    controller.tabSettings(tabList.getSelectedIndex(), location);
+                }
             }
         });
 
@@ -284,17 +306,23 @@ public class View extends JPanel implements Observer{
             @Override
             public void mouseClicked(MouseEvent e) {
                 showNote(model.getNote(headerList.getSelectedIndex()));
+                textArea.requestFocus();
             }
         });
 
-    }
+       /* search.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {find();}
+            @Override
+            public void removeUpdate(DocumentEvent e) {find();}
+            @Override
+            public void changedUpdate(DocumentEvent e) {}
+            private void find(){
+                controller.searchTextInsert(search.getText().trim());
+            }
+        });*/
 
-    /*ChangeListener tabChangeListener = new ChangeListener() {
-        @Override
-        public void stateChanged(ChangeEvent e) {
-            controller.changeTab(tabbedPanel.getSelectedIndex());
-        }
-    };*/
+    }
 
     class DocListener implements DocumentListener {
 

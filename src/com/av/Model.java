@@ -11,23 +11,25 @@ import java.util.Observable;
 public class Model extends Observable{
 
 
-    private DefaultListModel<Note> listModel;
-    private DefaultListModel<String> tabsModel;
-    private int selectedNote = 0;
+    private DefaultListModel<Note> headersModel;
+    private DefaultListModel<Section> tabsModel;
+    private int selectedTab;
+    private int selectedNote;
     private boolean flag = true;
     private int i;
-
     private DataBase db;
 
     public Model(){
 
-        listModel = new DefaultListModel<Note>();
-        tabsModel = new DefaultListModel<String>();
+        headersModel = new DefaultListModel<Note>();
+        tabsModel = new DefaultListModel<Section>();
 
-        //sections = new ArrayList<String>();
         connectDataBase();
+
+        selectedTab = 0;
+        selectedNote = 0;
+
         setSections();
-        setNotes(0);
     }
 
     private void connectDataBase(){
@@ -37,115 +39,121 @@ public class Model extends Observable{
         db.createDB();
     }
 
-    private ArrayList<String> downloadSections(){
-
-        ArrayList<String> sections = db.getSections();
-        return sections;
-    }
-
-    private ArrayList<Note> downloadNotes(int section_id){
-
-        ArrayList<Note> notes = db.getNotes(section_id);
-        return notes;
-    }
-
     private void setSections(){
 
-        List<String> tabs = downloadSections();
-        for(String tab : tabs)
+        List<Section> tabs = db.getSections();
+        tabsModel.clear();// = new DefaultListModel<Section>();
+
+        for(Section tab : tabs)
             tabsModel.addElement(tab);
-        tabsModel.addElement("+");
+
+        tabsModel.addElement(new Section("+"));
+
+        setNotes(getSection(selectedTab).getId());
     }
 
-    public String getSection(int index){
-        return tabsModel.get(index);
+    public void findNotes(String text){
+
+        List<Note> notes = db.findNotes(text);
+        headersModel = new DefaultListModel<Note>();
+        for(Note note : notes)
+            headersModel.add(0, note);
+
+        notifyAllObservers();
     }
 
     private void setNotes(int section_id){
 
-        List<Note> notes = downloadNotes(section_id);
-        listModel.clear();
+        //long time = System.currentTimeMillis();
+
+        List<Note> notes = db.getNotes(section_id);
+        headersModel = new DefaultListModel<Note>();
 
         for(Note note : notes)
-            listModel.add(0, note);
+            headersModel.add(0, note);
+
+        //time = System.currentTimeMillis() - time;
+        //System.out.println("time " + (double)time / 1000);
+
+        notifyAllObservers();
     }
 
-    public DefaultListModel<Note> getListModel(){
-        return listModel;
-    }
+    private void notifyAllObservers(){
 
-    public DefaultListModel<String> getTabsModel(){
-
-        return tabsModel;
-    }
-
-    private void changeListModel(int section_id){
-
-        listModel = new DefaultListModel<Note>();
-        setNotes(section_id);
-
-        setChanged();
-        notifyObservers(listModel);
-    }
-
-    public void addSection(String name) {
-
-        setSection(tabsModel.size() - 1 ,name);
-    }
-
-    public void setSection(int section_id, String name){
-
-        tabsModel.add(section_id, name);
-        db.addSection(name);
-        changeListModel(section_id);
         setChanged();
         notifyObservers();
     }
 
+    public DefaultListModel<Note> getHeadersModel(){
+        return headersModel;
+    }
+
+    public DefaultListModel<Section> getTabsModel(){
+
+        return tabsModel;
+    }
+
+    public void addSection(String name){
+
+        if(name.equals(""))
+            selectedTab = tabsModel.size() - 2;
+        else {
+            db.addSection(name);
+            selectedTab = tabsModel.size() - 1;
+        }
+        setSections();
+    }
+
+    public void renameSection(int index, String name){
+
+        int id = getSection(index).getId();
+        db.updateSection(id, name);
+        setSections();
+    }
+
+    public void deleteSection(int index){
+
+        int id = getSection(index).getId();
+        db.deleteSection(id);
+        selectedTab--;
+        setSections();
+    }
+
     public void changeSection(int section_id) {
 
-        changeListModel(section_id);
+        headersModel = new DefaultListModel<Note>();
+        selectedTab = section_id;
+        int id = getSection(section_id).getId();
+        setNotes(id);
     }
 
-    public void createNewNote(int section_id){
+    public void createNewNote(int section_id, String text){
 
-        db.addNote(section_id);
-        setNotes(section_id);
-        setChanged();
-        notifyObservers(listModel);
+        if(headersModel.size() > 0 && getNote(0).getText().trim().equals(""))
+            return;
 
+        int id = getSection(section_id).getId();
+        db.addNote(id, text);
+        setNotes(id);
     }
 
-    public void editNote(int note_id, int section_id, String text){
+    public void editNote(int note_id, String text){
 
-        // string for header
-        String t = text;
-        if(text.contains("\n"))
-            t = text.substring(0, text.indexOf("\n"));
-
-        Note note = listModel.get(note_id);
-        note.setHeader(t);
-        note.setText(text);
-
-        saveNote(note, section_id);
+        getNote(note_id).update(text, Service.date());
+        saveNote(note_id);
     }
 
-    public void removeNote(int index){
+    public void deleteNote(int index){
 
-        int id = listModel.get(index).getId();
-        listModel.remove(index);
+        int id = getNote(index).getId();
+        headersModel.remove(index);
         db.deleteNote(id);
+        notifyAllObservers();
     }
 
-    private void saveNote(Note note, int section_id){
+    private void saveNote(final int id){
 
-        //if(pause())
-            db.updateNote(note, section_id);
-
-    }
-
-    private boolean pause(){
-        i = 0;
+        i = 0; // TODO: rename this variable
 
         if(flag) {
 
@@ -157,30 +165,39 @@ public class Model extends Observable{
 
                     do {
                         try {
-
-                            Thread.sleep(500);
+                            Thread.sleep(100);
                             i++;
-
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    } while (i < 2);
-
+                        } catch (InterruptedException e) {e.printStackTrace();}
+                    } while (i < 5);
+                    //TODO: подобрать время ожидания
+                    db.updateNote(headersModel.get(id));
                     flag = true;
-                    System.out.println("save");
                 }
             });
             thread.start();    //Запуск потока
         }
-        return flag;
-    }
-
-    public void selectNote(int index){
-        selectedNote = index;
     }
 
     public Note getNote(int index){
-        return listModel.get(index);
+
+        Note note = new Note();
+        if (headersModel.size() > 0 && index >= 0) {
+            note = headersModel.get(index);
+        }
+        return note;
+    }
+
+    public Section getSection(int index){
+
+        return tabsModel.get(index);
+    }
+
+    public int getSelectedTab() {
+        return selectedTab;
+    }
+
+    public int getSelectedNote() {
+        return selectedNote;
     }
 
 }

@@ -27,11 +27,13 @@ public class SideBarListRenderer implements ListCellRenderer{
 
         renderer.setFont(Service.globalFont);
         renderer.setForeground(Color.DARK_GRAY);
+
         renderer.setBorder(null);
         renderer.setPreferredSize(new Dimension(800, dimension.getSearchPanel().height + 2));
         renderer.setIcon(icon);
         renderer.setHorizontalTextPosition(JLabel.LEFT);
         renderer.setVerticalTextPosition(JLabel.NORTH);
+
         return renderer;
     }
 

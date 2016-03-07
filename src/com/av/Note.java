@@ -6,24 +6,29 @@ package com.av;
 public class Note {
 
     private int id;
+    private int section_id;
     private String header;
     private String date;
-    private String time;
     private String text;
 
     public Note(){
-        this("New note");
-    }
-    public Note(String text){
-        this.createNote(text);
+        this(0);
     }
 
-    private void createNote(String text){
+    public Note(int id){
+        this(id, 0);
+    }
 
-        this.setHeader(text);
-        this.setText("");
-        this.setTime(Service.date("HH:mm"));
-        this.setDate(Service.date("dd  MMMM  yyyy"));
+    public Note(int id, int section_id){
+        this(id, section_id, "");
+    }
+
+    public Note(int id, int section_id, String text){
+
+        this.setId(id);
+        this.setText(text);
+        this.setSection_id(section_id);
+        this.setDate(Service.date());
     }
 
     public int getId() {
@@ -34,7 +39,16 @@ public class Note {
         this.id = id;
     }
 
+    public void setSection_id(int section_id) {
+        this.section_id = section_id;
+    }
+
+    public int getSection_id() {
+        return section_id;
+    }
+
     public String getHeader() {
+
         return header;
     }
 
@@ -43,33 +57,43 @@ public class Note {
     }
 
     public String getDate() {
-        return date;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
+        return  date;
     }
 
     public String getTime() {
 
-        return time;
+        return date.substring(date.lastIndexOf(" "));
     }
 
     public void setHeader(String text) {
 
-        String date = Service.date("HH:mm");
-        this.header = "<html><b>"+ text +"</b><br/><FONT color=\"#808080\">" + date + "</FONT></html>";
+        if(text.contains("\n"))
+            this.header = text.substring(0, text.indexOf("\n"));
+        else if(text.trim().equals(""))
+            this.header = "New note";
+        else
+            this.header = text;
+        //TODO: контролировать длинну заголовка
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.date =  date;
     }
 
     public void setText(String text) {
+
         this.text = text;
+        setHeader(text);
+    }
+
+    public void update(String text, String date){
+
+        setText(text);
+        setDate(date);
     }
 
     public String toString(){
-        return getHeader();
+
+        return "<html><b> "+ getHeader() +"</b><br/><FONT color=\"#808080\"> " + getTime() + "</FONT></html>";
     }
 }

@@ -60,10 +60,16 @@ public class Service {
         return icon;
     }
 
-    public static String date(String format){
+    public static String date(){
 
         Date date = new Date();
-        return new SimpleDateFormat(format).format(date);
+        return new SimpleDateFormat("dd  MMMM  yyyy HH:mm").format(date);
+    }
+
+    public static String date(String param){
+
+        Date date = new Date();
+        return new SimpleDateFormat(param).format(date);
     }
 
     public static String readFile(String path){
